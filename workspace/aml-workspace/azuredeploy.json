@@ -4,7 +4,6 @@
     "parameters": {
         "deploymentTla": {
             "type": "string",
-            "defaultValue": "[concat('one', uniqueString(resourceGroup().id))]",
             "metadata": {
                 "description": "This is a Three Letter Acronym for your deployment name. 'one' for first deployment for example."
             }
