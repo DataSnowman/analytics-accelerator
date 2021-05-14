@@ -1,0 +1,14 @@
+{
+    "$schema": "https://aka.ms/azure-quickstart-templates-metadata-schema#",
+    "itemDisplayName": "Azure Synapse Analytics Accelerator",
+    "description": "This template creates a Analytics Accelerator environment for Azure Synapse, including SQL Pools and optional Apache Spark Pools",
+    "summary": "Azure Synapse Analytics Accelerator",
+    "validationType": "Manual",
+    "githubUsername": "DataSnowman",
+    "dateUpdated": "2021-05-14",
+    "type": "QuickStart",
+    "tags": {"baseTemplate": "Based on bmoore-msft ARM Template https://github.com/Azure/azure-quickstart-templates/blob/master/101-synapse-poc/metadata.json"},
+    "environments": [
+      "AzureCloud"
+    ]
+}

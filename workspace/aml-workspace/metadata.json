@@ -4,7 +4,7 @@
     "itemDisplayName": "Azure Machine Learning Workspace",
     "description": "This template creates a new Azure Machine Learning Workspace, along with an encrypted Storage Account, KeyVault and Applications Insights Logging",
     "summary": "This template creates a new Azure Machine Learning Workspace with storage, keyVault and appInsights",
-    "githubUsername": "datasnowman",
+    "githubUsername": "DataSnowman",
     "dateUpdated": "2021-05-14",
     "tags": {"baseTemplate": "Based on bmoore-msft ARM Template https://github.com/Azure/azure-quickstart-templates/blob/master/modules/machine-learning-workspace/0.9/metadata.json"}
 }
