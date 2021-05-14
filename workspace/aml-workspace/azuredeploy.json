@@ -10,7 +10,7 @@
         },
         "workspaceName": {
             "type": "string",
-            "defaultValue": "[concat('ml-', uniqueString(resourceGroup().id))]",
+            "defaultValue": "[concat('mlws-', uniqueString(resourceGroup().id))]",
             "metadata": {
                 "description": "Specifies the name of the Azure Machine Learning workspace."
             }
@@ -24,21 +24,21 @@
         },
         "keyVaultName": {
             "type": "string",
-            "defaultValue": "[concat('kv-', uniqueString(resourceGroup().id))]",
+            "defaultValue": "[concat('mlkv-', uniqueString(resourceGroup().id))]",
             "metadata": {
                 "description": "The name for the key vault to created and associated with the workspace."
             }
         },
         "applicationInsightsName": {
             "type": "string",
-            "defaultValue": "[concat('appin-', uniqueString(resourceGroup().id))]",
+            "defaultValue": "[concat('mlai-', uniqueString(resourceGroup().id))]",
             "metadata": {
                 "description": "The name for the application insights to created and associated with the workspace."
             }
         }
     },
     "variables": {
-        "storageAccountName": "[concat(parameters('deploymentTla'),uniqueString(resourceGroup().id))]"
+        "storageAccountName": "[concat('ml',parameters('deploymentTla'),uniqueString(resourceGroup().id))]"
     },
     "resources": [
         {
