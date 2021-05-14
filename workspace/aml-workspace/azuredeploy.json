@@ -38,7 +38,7 @@
         }
     },
     "variables": {
-        "storageAccountName": "[parameters('deploymentTla')]"
+        "storageAccountName": "[concat(parameters('deploymentTla'),uniqueString(resourceGroup().id))]"
     },
     "resources": [
         {
