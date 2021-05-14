@@ -9,7 +9,7 @@
 ![Best Practice Check](https://azurequickstartsservice.blob.core.windows.net/badges/101-synapse-poc/BestPracticeResult.svg)
 ![Cred Scan Check](https://azurequickstartsservice.blob.core.windows.net/badges/101-synapse-poc/CredScanResult.svg)
 
-[![Deploy To Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-synapse-poc%2Fazuredeploy.json) [![Visualize](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.svg?sanitize=true)](http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-synapse-poc%2Fazuredeploy.json)
+[![Deploy To Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FDataSnowman%2Fanalytics-accelerator%2Fmain%2Fworkspace%2Fsynapse-workspace%2Fazuredeploy.json) [![Visualize](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.svg?sanitize=true)](http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2FDataSnowman%2Fanalytics-accelerator%2Fmain%2Fworkspace%2Fsynapse-workspace%2Fazuredeploy.json)
 
 This template deploys necessary resources to run an Azure Synapse Analytics 
 
@@ -33,10 +33,8 @@ This template deploys the following:
 
 ## Index
 
-- [Purpose](https://github.com/datasnowman/azure-quickstart-templates/tree/master/101-synapse-poc#purpose)
-- [Prerequisites](https://github.com/Azure/azure-quickstart-templates/tree/master/101-synapse-poc#prerequisites)
-- [Deploy to Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/101-synapse-poc#deploy-to-azure)
-- [Post Deployment](https://github.com/Azure/azure-quickstart-templates/tree/master/101-synapse-poc#post-deployment)
+- [Purpose](https://github.com/DataSnowman/analytics-accelerator/blob/main/workspace/synapse-workspace/README.md#purpose)
+- [Prerequisites](https://github.com/DataSnowman/analytics-accelerator/blob/main/workspace/synapse-workspace/README.md#prerequisites)
 
 ## Purpose
 
