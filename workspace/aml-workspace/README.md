@@ -21,8 +21,8 @@ It is a simple template for creating a generic Azure ML instance.
 
 | Name | Type | Required | Description |
 | :------------- | :----------: | :----------: | :------------- |
+| deploymentTla | string | Yes | The three letter acronym to make the storage account unique when combined with the uniqueString and associated with the workspace.|
 | workspaceName | string | No | Specifies the name of the Azure Machine Learning workspace. Prefixed with 'ml-' and a uniqueString(resourceGroup().id)|
-| storageAccountName | string | No | The name for the storage account to created and associated with the workspace.|
 | keyVaultName | string | No | The name for the key vault to created and associated with the workspace. Prefixed with 'kv-' and a uniqueString(resourceGroup().id)|
 | applicationInsightsName | string | No | The name for the application insights to created and associated with the workspace. Prefixed with 'appin-', uniqueString(resourceGroup().id)|
 | location | string | No | Specifies the location for all resources.|
