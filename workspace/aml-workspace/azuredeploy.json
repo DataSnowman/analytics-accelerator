@@ -2,6 +2,12 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
+        "deploymentTla": {
+            "type": "string",
+            "metadata": {
+                "description": "This is a Three Letter Acronym for your deployment name. 'one' for first deployment for example."
+            }
+        },
         "workspaceName": {
             "type": "string",
             "defaultValue": "[concat('ml-', uniqueString(resourceGroup().id))]",
@@ -16,13 +22,6 @@
                 "description": "Specifies the location for all resources."
             }
         },
-        "storageAccountName": {
-            "type": "string",
-            "defaultValue": "[concat('sa', uniqueString(resourceGroup().id))]",
-            "metadata": {
-                "description": "The name for the storage account to created and associated with the workspace."
-            }
-        },
         "keyVaultName": {
             "type": "string",
             "defaultValue": "[concat('kv-', uniqueString(resourceGroup().id))]",
@@ -32,17 +31,20 @@
         },
         "applicationInsightsName": {
             "type": "string",
-            "defaultValue": "[concat('ai-', uniqueString(resourceGroup().id))]",
+            "defaultValue": "[concat('appin-', uniqueString(resourceGroup().id))]",
             "metadata": {
                 "description": "The name for the application insights to created and associated with the workspace."
             }
         }
     },
+    "variables": {
+        "storageAccountName": "[parameters('deploymentTla')]"
+    },
     "resources": [
         {
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2019-06-01",
-            "name": "[parameters('storageAccountName')]",
+            "name": "[variables('storageAccountName')]",
             "location": "[parameters('location')]",
             "sku": {
                 "name": "Standard_LRS"
@@ -96,14 +98,14 @@
             "dependsOn": [
                 "[resourceId('Microsoft.Insights/components', parameters('applicationInsightsName'))]",
                 "[resourceId('Microsoft.KeyVault/vaults', parameters('keyVaultName'))]",
-                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]"
+                "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]"
             ],
             "identity": {
                 "type": "systemAssigned"
             },
             "properties": {
                 "friendlyName": "[parameters('workspaceName')]",
-                "storageAccount": "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]",
+                "storageAccount": "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
                 "keyVault": "[resourceId('Microsoft.KeyVault/vaults', parameters('keyVaultName'))]",
                 "applicationInsights": "[resourceId('Microsoft.Insights/components', parameters('applicationInsightsName'))]"
             }
@@ -116,7 +118,7 @@
         },
         "storageAccountName": {
             "type": "string",
-            "value": "[parameters('storageAccountName')]"
+            "value": "[variables('storageAccountName')]"
         },
         "keyVaultName": {
             "type": "string",
