@@ -361,6 +361,17 @@
             "properties": {
               "publicAccess": "None"
             }
+          },
+          {
+            "name": "[concat('default/', 'capture')]",
+            "type": "blobServices/containers",
+            "apiVersion": "2019-06-01",
+            "dependsOn": [
+              "[variables('dlsName')]"
+            ],
+            "properties": {
+              "publicAccess": "None"
+            }
           }
         ]
       },
