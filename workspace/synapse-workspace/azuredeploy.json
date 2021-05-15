@@ -56,15 +56,15 @@
       },
       "deploymentType": {
         "type": "string",
-        "defaultValue": "poc",
+        "defaultValue": "acceler",
         "allowedValues": [
           "devtest",
-          "poc",
+          "acceler",
           "prod",
           "shared"
         ],
         "metadata": {
-          "description": "Specify deployment type: DevTest, POC, Prod, Shared. This will also be used in the naming convention."
+          "description": "Specify deployment type: DevTest, AnalyticsAccelerator, Prod, Shared. This will also be used in the naming convention."
         }
       },
       "sqlAdministratorLogin": {
@@ -256,8 +256,8 @@
       }
     },
     "variables": {
-      "synapseName": "[toLower(concat(parameters('deploymentTla'),parameters('deploymentType')))]",
-      "dlsName": "[toLower(concat('dls',parameters('deploymentTla'),parameters('deploymentType')))]",
+      "synapseName": "[toLower(concat(parameters('deploymentTla'),parameters('deploymentType'),uniqueString(resourceGroup().id)))]",
+      "dlsName": "[toLower(concat(parameters('deploymentTla'),parameters('deploymentType')))]",
       "dlsFsName": "[toLower(concat(variables('dlsName'),'fs1'))]",
       "sqlPoolName": "[toLower(concat(variables('workspaceName'),'p1'))]",
       "workspaceName": "[toLower(concat(variables('synapseName'),'ws1'))]",
