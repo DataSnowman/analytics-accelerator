@@ -1,21 +1,4 @@
-# Create an Azure Machine Learning Workspace for the Analytics Accelerator
-
-![Azure Public Test Date](https://azurequickstartsservice.blob.core.windows.net/badges/modules/machine-learning-workspace/0.9/PublicLastTestDate.svg)
-![Azure Public Test Result](https://azurequickstartsservice.blob.core.windows.net/badges/modules/machine-learning-workspace/0.9/PublicDeployment.svg)
-
-![Azure US Gov Last Test Date](https://azurequickstartsservice.blob.core.windows.net/badges/modules/machine-learning-workspace/0.9/FairfaxLastTestDate.svg)
-![Azure US Gov Last Test Result](https://azurequickstartsservice.blob.core.windows.net/badges/modules/machine-learning-workspace/0.9/FairfaxDeployment.svg)
-
-![Best Practice Check](https://azurequickstartsservice.blob.core.windows.net/badges/modules/machine-learning-workspace/0.9/BestPracticeResult.svg)
-![Cred Scan Check](https://azurequickstartsservice.blob.core.windows.net/badges/modules/machine-learning-workspace/0.9/CredScanResult.svg)
-
-[![Deploy To Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FDataSnowman%2Fanalytics-accelerator%2Fmain%2Fworkspace%2Faml-workspace%2Fazuredeploy.json)
-[![Deploy To Azure US Gov](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazuregov.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FDataSnowman%2Fanalytics-accelerator%2Fmain%2Fworkspace%2Faml-workspace%2Fazuredeploy.json)
-[![Visualize](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.svg?sanitize=true)](http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2FDataSnowman%2Fanalytics-accelerator%2Fmain%2Fworkspace%2Faml-workspace%2Fazuredeploy.json)
-
-This template creates a new Azure Machine Learning Workspace, along with an encrypted Storage Account, KeyVault and Applications Insights Logging.
-
-It is a simple template for creating a generic Azure ML instance.
+# Azure Machine Learning Workspace ARM Template
 
 ## Parameters
 
@@ -36,5 +19,3 @@ It is a simple template for creating a generic Azure ML instance.
 | keyVaultName | string | The name for the key vault to created and associated with the workspace.|
 | applicationInsightsName | string | The name for the application insights to created and associated with the workspace.|
 | location | string | Specifies the location for all resources.|
-
-```apiVersion: n/a```
