@@ -6,7 +6,7 @@ The following sections can be used to deploy an Azure Synapse Analytics Workspac
 
 This template allows the Administrator to deploy an Analytics Accelerator environment of Azure Synapse Analytics with some pre-set parameters and Azure Machine Learning. This allows more time to focus on hands on keyboard and learn about these Azure services.
 
-Using the Getting Started wizard inside of the workspace is recommended to use sample data if you do not have your own with you to add to the Storage Account.
+Using the Getting Started wizard inside of the workspace is recommended to use sample data if you do not have your own to the Storage Account.
 
 ## Prerequisites
 
