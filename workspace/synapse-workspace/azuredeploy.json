@@ -399,7 +399,7 @@
       },
       {
         "type": "Microsoft.Synapse/workspaces",
-        "apiVersion": "2019-06-01-preview",
+        "apiVersion": "2021-03-01",
         "name": "[variables('workspaceName')]",
         "location": "[parameters('location')]",
         "identity": {
@@ -458,7 +458,7 @@
       },
       {
         "type": "Microsoft.Synapse/workspaces/sqlPools",
-        "apiVersion": "2019-06-01-preview",
+        "apiVersion": "2021-03-01",
         "name": "[concat(variables('workspaceName'), '/', variables('sqlPoolName'))]",
         "location": "[parameters('location')]",
         "sku": {
@@ -490,7 +490,7 @@
       {
         "condition": "[equals(parameters('sparkDeployment'),'true')]",
         "type": "Microsoft.Synapse/workspaces/bigDataPools",
-        "apiVersion": "2019-06-01-preview",
+        "apiVersion": "2021-03-01",
         "name": "[concat(variables('workspaceName'), '/', variables('sparkPoolName'))]",
         "location": "[parameters('location')]",
         "dependsOn": [
@@ -523,7 +523,7 @@
         ],
         "properties": {
           "roleDefinitionId": "[resourceId('Microsoft.Authorization/roleDefinitions', 'ba92f5b4-2d11-453d-a403-e96b0029c9fe')]",
-          "principalId": "[reference(resourceId('Microsoft.Synapse/workspaces', variables('workspaceName')), '2019-06-01-preview', 'Full').identity.principalId]",
+          "principalId": "[reference(resourceId('Microsoft.Synapse/workspaces', variables('workspaceName')), '2021-03-01', 'Full').identity.principalId]",
           "principalType": "ServicePrincipal"
         }
       },
