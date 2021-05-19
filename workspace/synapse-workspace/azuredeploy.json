@@ -422,7 +422,7 @@
           {
             "condition": "[equals(parameters('allowAllConnections'),'true')]",
             "type": "firewallrules",
-            "apiVersion": "2019-06-01-preview",
+            "apiVersion": "2021-03-01",
             "name": "allowAll",
             "location": "[parameters('location')]",
             "dependsOn": [ "[variables('workspaceName')]" ],
@@ -433,7 +433,7 @@
           },
           {
             "type": "firewallrules",
-            "apiVersion": "2019-06-01-preview",
+            "apiVersion": "2021-03-01",
             "name": "AllowAllWindowsAzureIps",
             "location": "[parameters('location')]",
             "dependsOn": [ "[variables('workspaceName')]" ],
@@ -444,7 +444,7 @@
           },
           {
             "type": "managedIdentitySqlControlSettings",
-            "apiVersion": "2019-06-01-preview",
+            "apiVersion": "2021-03-01",
             "name": "default",
             "location": "[parameters('location')]",
             "dependsOn": [ "[variables('workspaceName')]" ],
@@ -475,7 +475,7 @@
           {
             "condition": "[parameters('metadataSync')]",
             "type": "metadataSync",
-            "apiVersion": "2019-06-01-preview",
+            "apiVersion": "2021-03-01",
             "name": "config",
             "location": "[parameters('location')]",
             "dependsOn": [
