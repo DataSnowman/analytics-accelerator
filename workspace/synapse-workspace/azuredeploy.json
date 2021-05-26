@@ -54,6 +54,17 @@
           "description": "This parameter will determine the node size if SparkDeployment is true"
         }
       },
+      "sparkVersion": {
+        "type": "string",
+        "defaultValue": "2.4",
+        "allowedValues": [
+          "2.4",
+          "3.0"
+        ],
+        "metadata": {
+          "description": "This parameter will determine the Spark Version if SparkDeployment is true"
+        }
+      },
       "deploymentType": {
         "type": "string",
         "defaultValue": "acceler",
@@ -509,7 +520,7 @@
             "enabled": true,
             "delayInMinutes": 15
           },
-          "sparkVersion": "2.4"
+          "sparkVersion": "[parameters('sparkVersion')]"
         }
       },
       {
