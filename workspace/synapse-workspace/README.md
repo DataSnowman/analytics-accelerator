@@ -42,7 +42,7 @@ Select the data source type. In this case, the target data source is an Azure Da
 
 ![Step 1c](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/1c.png)
 
-In the next window, enter information about the data source. In this example, we're creating a Managed private endpoint to an ADLS Gen2 account. Enter a Name for the Managed private endpoint (i.e. AzureDataLakeStorageMpe1). Provide an Azure subscription and the Storage account name created in the deployment. Select Create.
+In the next window, enter information about the data source. In this example, we're creating a Managed private endpoint to an ADLS Gen2 account. Enter a Name for the Managed private endpoint (i.e. `AzureDataLakeStorageMpe1`). Provide an Azure subscription and the Storage account name created in the deployment. Select Create.
 
 ![Step 1d](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/1d.png)
 
@@ -62,13 +62,13 @@ After a few minutes the Approval state in Synapse Mangaged private endpoints wil
 
 ![Step 1g](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/1g.png)
 
-Further information can be found:
-
-[Create a Managed private endpoint to your data source](https://docs.microsoft.com/en-us/azure/synapse-analytics/security/how-to-create-managed-private-endpoints)
+Further information can be found: [Create a Managed private endpoint to your data source](https://docs.microsoft.com/en-us/azure/synapse-analytics/security/how-to-create-managed-private-endpoints)
 
 ### Step 2 - Create a folder in the capture container
 
-Create a folder called SeattlePublicLibrary in the capture container on the storage account created in the Deployment in Step 1 and then Download from https://data.seattle.gov/browse?q=Seattle%20Public%20Libraries&sortBy=most_accessed&utf8=%E2%9C%93 and copy the Seattle Public Datasets as csv files into the SeattlePublicLibrary folder in the capture container
+Create a folder called `SeattlePublicLibrary` in the capture container on the storage account created in the deployment
+
+then Download from https://data.seattle.gov/browse?q=Seattle%20Public%20Libraries&sortBy=most_accessed&utf8=%E2%9C%93 and copy the Seattle Public Datasets as csv files into the SeattlePublicLibrary folder in the capture container
 
 Click on the Export button for: 
 	- Checkouts by Title at https://data.seattle.gov/Community/Checkouts-by-Title/tmmm-ytt6
@@ -107,3 +107,50 @@ Step 8 - Run Select Top 100 rows query on the spark tables
 Step 9 - Create External tables on Compose Parquet files to load to SQL Pool
 
 	- Go into the compose container compose in the SeattlePublicLibrary/CheckoutsByTitlePhysicalItems/checkouts.parquet and right click one of the parquet files (I.e. part-00000-f747df7e-a79a-497c-ade0-4d0e0c9692ee-c000.snappy.parquet) and select New SQL script>Create external table.  Select a database or create a new one, provide a table name, and select Using SQL Script. Then click Create.
+
+This will create a script that look like this:
+
+IF NOT EXISTS (SELECT * FROM sys.external_file_formats WHERE name = 'SynapseParquetFormat') 
+	CREATE EXTERNAL FILE FORMAT [SynapseParquetFormat] 
+	WITH ( FORMAT_TYPE = PARQUET)
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.external_data_sources WHERE name = 'compose_spkaccelerjqvse6bhhchxi_dfs_core_windows_net') 
+	CREATE EXTERNAL DATA SOURCE [compose_spkaccelerjqvse6bhhchxi_dfs_core_windows_net] 
+	WITH (
+		LOCATION   = 'https://spkaccelerjqvse6bhhchxi.dfs.core.windows.net/compose', 
+	)
+Go
+
+CREATE EXTERNAL TABLE checkouts_by_title_physical_items (
+	[id] varchar(8000),
+	[checkout_year] int,
+	[bib_number] int,
+	[item_barcode] varchar(8000),
+	[item_type] varchar(8000),
+	[collection] varchar(8000),
+	[call_number] varchar(8000),
+	[item_title] varchar(8000),
+	[subjects] varchar(8000),
+	[checkout_date_time] datetime2(7),
+	[load_date] datetime2(7)
+	)
+	WITH (
+	LOCATION = 'SeattlePublicLibrary/CheckoutsByTitlePhysicalItems/checkouts.parquet/part-*.snappy.parquet',
+	DATA_SOURCE = [compose_spkaccelerjqvse6bhhchxi_dfs_core_windows_net],
+	FILE_FORMAT = [SynapseParquetFormat]
+	)
+GO
+
+SELECT TOP 100 * FROM checkouts_by_title_physical_items
+GO
+
+
+
+Remember to use a * wildcard in the LOCATION so the table is made on all of the files and not just one.  It looks like this:
+
+Replace part-00000-f747df7e-a79a-497c-ade0-4d0e0c9692ee-c000.snappy.parquet with part-*.snappy.parquet so it looks like this:
+
+LOCATION = 'SeattlePublicLibrary/CheckoutsByTitlePhysicalItems/checkouts.parquet/part-*.snappy.parquet',
+
+Step 10 - Load the external table into staging in the dedicated SQL Pool
