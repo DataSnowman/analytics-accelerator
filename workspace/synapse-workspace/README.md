@@ -1,4 +1,4 @@
-# Azure Synapse Analytics Workspace ARM Template
+## Azure Synapse Analytics Workspace ARM Template
 
 ## Parameters
 
@@ -22,3 +22,6 @@
 | Time Zone | string | Yes | Time Zone for the schedule |
 | Resume Time | string | Yes | Time of Day when the data warehouse will be resumed |
 | Pause Time | string | Yes | Time of day when the data warehouse will be paused |
+
+
+## Post Deployment Steps
