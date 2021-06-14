@@ -38,7 +38,7 @@ This template deploys the following:
 
 ## Post Deployment
 
-[Synapse Analytics Post Deployment](https://github.com/DataSnowman/analytics-accelerator/blob/main/workspace/synapse-workspace/README.md#postdeploymentsteps)
+[Synapse Analytics Post Deployment](https://github.com/DataSnowman/analytics-accelerator/blob/main/workspace/synapse-workspace/README.md#post-deployment-steps)
 
 ## Deploy an Azure Machine Learning Workspace
 
