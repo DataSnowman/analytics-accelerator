@@ -8,7 +8,10 @@
       },
       "_artifactsLocationSASToken": {
         "type": "securestring",
-        "defaultValue": ""
+        "defaultValue": "",
+        "metadata": {
+          "description": "This is for the Logic App but can be left blank"
+        }
       },
       "location": {
         "type": "string",
