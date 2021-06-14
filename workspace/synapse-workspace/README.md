@@ -32,25 +32,25 @@ Because the Synapse Workspace is using a Managed Virtual Network, the Storage Ac
 
 You can create a Managed private endpoint to your data source from Azure Synapse Studio. Select the Overview tab in Azure portal and select Launch Synapse Studio.
 
-![Step 1a](https://raw.githubusercontent.com/datasnowman/azure-quickstart-templates/master/101-synapse-poc/images/1a.png)
+![Step 1a](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/1a.png)
 
 In Azure Synapse Studio, select the Manage tab from the left navigation. Select Managed Virtual Networks and then select + New.
 
-![Step 1b](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-synapse-poc/images/10.png)
+![Step 1b](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/1b.png)
 
 Select the data source type. In this case, the target data source is an ADLS Gen2 account. Select Continue.
 
-![Step 1c](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-synapse-poc/images/11.png)
+![Step 1c](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/1c.png)
 
 In the next window, enter information about the data source. In this example, we're creating a Managed private endpoint to an ADLS Gen2 account. Enter a Name for the Managed private endpoint. Provide an Azure subscription and a Storage account name. Select Create.
 
-![Step 1d](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-synapse-poc/images/12.png)
+![Step 1d](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/1d.png)
 
 After submitting the request, you'll see its status. To verify the successful creation of your Managed private endpoint was created, check its Provisioning State. You may need to wait 1 minute and select Refresh to update the provisioning state. You can see that the Managed private endpoint to the ADLS Gen2 account was successfully created.
 
 You can also see that the Approval State is Pending. The owner of the target resource can approve or deny the private endpoint connection request. If the owner approves the private endpoint connection request, then a private link is established. If denied, then a private link isn't established.
 
-![Step 1e](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-synapse-poc/images/13.png)
+![Step 1e](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/1e.png)
 
 Further information can be found:
 
