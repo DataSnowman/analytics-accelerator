@@ -366,7 +366,7 @@
         },
         "resources": [
           {
-            "name": "[concat('default', variables('dlsFsName'))]",
+            "name": "[concat('default/', variables('dlsFsName'))]",
             "type": "blobServices/containers",
             "apiVersion": "2019-06-01",
             "dependsOn": [
