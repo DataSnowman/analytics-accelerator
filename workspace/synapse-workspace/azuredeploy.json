@@ -366,7 +366,7 @@
         },
         "resources": [
           {
-            "name": "[concat('default', variables('dlsFsName'))]",
+            "name": "[concat('default/', variables('dlsFsName'))]",
             "type": "blobServices/containers",
             "apiVersion": "2019-06-01",
             "dependsOn": [
@@ -377,7 +377,7 @@
             }
           },
           {
-            "name": "[concat('default', 'capture')]",
+            "name": "[concat('default/', 'capture')]",
             "type": "blobServices/containers",
             "apiVersion": "2019-06-01",
             "dependsOn": [
@@ -388,7 +388,7 @@
             }
           },
           {
-            "name": "[concat('default', 'compose')]",
+            "name": "[concat('default/', 'compose')]",
             "type": "blobServices/containers",
             "apiVersion": "2019-06-01",
             "dependsOn": [
@@ -399,7 +399,7 @@
             }
           },
           {
-            "name": "[concat('default', 'comsume')]",
+            "name": "[concat('default/', 'comsume')]",
             "type": "blobServices/containers",
             "apiVersion": "2019-06-01",
             "dependsOn": [
