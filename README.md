@@ -12,7 +12,9 @@ Using the Getting Started wizard inside of the workspace is recommended to use s
 
 - Owner to the Azure Subscription being deployed. This is for creation of a separate Analytics Accelerator Resource Group(s) and to delegate roles necessary for this deployment.
 
-## Post Deployment - Important step needed to use this Analytics Accelerator
+## Post Deployment - Important steps required to use this Analytics Accelerator
+
+```***Remember to come back to this link above after the deployment has completed***```
 
 [Synapse Analytics Post Deployment](https://github.com/DataSnowman/analytics-accelerator/blob/main/workspace/synapse-workspace/README.md#post-deployment-steps)
 
