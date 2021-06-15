@@ -64,29 +64,67 @@ After a few minutes the Approval state in Synapse Mangaged private endpoints wil
 
 Further information can be found: [Create a Managed private endpoint to your data source](https://docs.microsoft.com/en-us/azure/synapse-analytics/security/how-to-create-managed-private-endpoints)
 
-### Step 2 - Create a folder in the capture container
+### Step 2 - Open up the storage accout created by the deployment and navigate to Access Control (IAM) and click on + Add and choose Add role assignment
+
+![Step 2a](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/2a.png)
+
+	Role - Search for Storage Blob Data Contributor
+	Select - Search for your user and select it
+
+    Click Save
+
+![Step 2b](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/2b.png)
+
+Ideally you would actually add a security group with a name like `synapse_WSAdmins` to the Storage Blob Data Contributor role and your user (and others needing this access) would be a member of that security group.  This `synapse_WSAdmins` would also be a Group in the Access Control in Manage>Security>Access control in the Synapse Workspace
+
+### Step 3 - Create a folder in the capture container and download/copy files
+
+`Note - You don't need to copy them all.  Maybe Checkouts_by_Title.csv which is 7.7 GB should be your choice to try this out.  Also pick the option that works best for you.`
 
 Create a folder called `SeattlePublicLibrary` in the capture container on the storage account created in the deployment
 
-then Download from https://data.seattle.gov/browse?q=Seattle%20Public%20Libraries&sortBy=most_accessed&utf8=%E2%9C%93 and copy the Seattle Public Datasets as csv files into the SeattlePublicLibrary folder in the capture container
+![Step 3a](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/3a.png)
 
-Click on the Export button for: 
-	- Checkouts by Title at https://data.seattle.gov/Community/Checkouts-by-Title/tmmm-ytt6
-	- Library Collection Inventory at https://data.seattle.gov/Community/Library-Collection-Inventory/6vkj-f5xf
-	- Integrated Library System ILS Data Dictionary at https://data.seattle.gov/Community/Integrated-Library-System-ILS-Data-Dictionary/pbt3-ytbc
-	- Checkouts By Title Physical Items at https://data.seattle.gov/Community/Checkouts-By-Title-Physical-Items-/5src-czff
+Download the Seattle Public Library datasets from [https://data.seattle.gov/](https://data.seattle.gov/browse?q=Seattle%20Public%20Libraries&sortBy=most_accessed&utf8=%E2%9C%93) and copy the Seattle Public Datasets as csv files into the SeattlePublicLibrary folder in the capture container.
 
-You can use Microsoft Azure Storage Explorer to do this on you computer or use an Azure VM, or other methods.
+Click on the Export button for:
 
-Click on the TEXT/CSV button for Seattle Public Libraries at https://data.seattle.gov/dataset/Seattle-Public-Libraries/9a6b-u88b
+| Name | File | Download URL | Size (as of 6/2021) |
+| :------------- | :----------: | :----------: | :------------- |
+| [Checkouts by Title](https://data.seattle.gov/Community/Checkouts-by-Title/tmmm-ytt6) | Checkouts_by_Title.csv | https://data.seattle.gov/api/views/tmmm-ytt6/rows.csv?accessType=DOWNLOAD | 7.7 GB |
+| [Checkouts By Title Physical Items](https://data.seattle.gov/Community/Checkouts-By-Title-Physical-Items-/5src-czff) | Checkouts_By_Title__Physical_Items_.csv | https://data.seattle.gov/api/views/5src-czff/rows.csv?accessType=DOWNLOAD | 25.2 GB |
+| [Library Collection Inventory](https://data.seattle.gov/Community/Library-Collection-Inventory/6vkj-f5xf) | Library_Collection_Inventory.csv | https://data.seattle.gov/api/views/6vkj-f5xf/rows.csv?accessType=DOWNLOAD | 18.5 GB|
+| [Integrated Library System ILS Data Dictionary](https://data.seattle.gov/Community/Integrated-Library-System-ILS-Data-Dictionary/pbt3-ytbc) | Integrated_Library_System__ILS__Data_Dictionary.csv | https://data.seattle.gov/api/views/pbt3-ytbc/rows.csv?accessType=DOWNLOAD | 40.9 KB |
 
-Step 3 - Open up the storage accout created by the deployment in Step 1 and navigate to Access Control (IAM) and click on + Add and choose Add role assignment
-	- Search for Storage Blob Data Contributor
-	- Search for your user and click Save
 
-Ideally you would actually add a security group with a name like synapse_WSAdmins to the Storage Blob Data Contributor role and your user would be a member of that security group.  This synapse_WSAdmins would also be a Group in the Access Control in Manage>Security>Access control in the Synapse Workspace
+`Decision Point`
 
-Step 4 - Open up Synapse Studio and navigate to the Data section (right below Home) and click the Linked tab, open the ADLS Gen2 storage and see if the csv files are in the capture container
+This download/copy can be done in at least 3 different options:
+
+#### Option 1 - Slowest
+
+Download to your laptop and then copy to Azure Storage account using something like [Microsoft Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer/)
+
+![Step 3b](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/3b.png)
+
+Or the Data Linked Storage accounts in Azure Synapse Analytics Studio.  
+
+![Step 3c](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/3c.png)
+
+`Note the files are pretty large so this would be the slowest option`
+
+#### Option 2 - Speed things up using an Azure WIndows Server VM
+
+You can install [Microsoft Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer/) on an Azure Windows Server VM, or use [AzCopy](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10).  The advantage of this option is that you could have faster network access from an Azure VM for the download and if the VM is in the same region as your Synapse deployment the copy to the Storage account using Microsoft Azure Storage Explorer will be faster.
+`Note that Microsoft Azure Storage Explorer uses AzCopy but provides a GUI interface vs using the Azure CLI`
+
+#### Option 3 - Learn how to use a Synapse Pipeline to move the files with HTTP connection in a Copy Activity
+
+`Note this option would be best when you want to connect the Copy activity to a notebook activities later to make a more realistic pipeline that could be scheduled`
+
+![Step 3d](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/3d.png)
+
+### Step 4 - Open up Synapse Studio and navigate to the Data section (right below Home) and click the Linked tab, open the ADLS Gen2 storage and see if the csv files are in the capture container
 
 Step 5 - Import the 4 Spark Notebooks from the Develop section in Synapse Studio.  Import these Notebooks:
 
