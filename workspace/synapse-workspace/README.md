@@ -64,14 +64,17 @@ After a few minutes the Approval state in Synapse Mangaged private endpoints wil
 
 Further information can be found: [Create a Managed private endpoint to your data source](https://docs.microsoft.com/en-us/azure/synapse-analytics/security/how-to-create-managed-private-endpoints)
 
-### Step 2 - Open up the storage accout created by the deployment and navigate to Access Control (IAM) and click on + Add and choose Add role assignment
+### Step 2 - Assign your user to Storage Blob Data Contributor role
+
+Open up the storage account created by the deployment and navigate to Access Control (IAM) and click on + Add and choose Add role assignment
 
 ![Step 2a](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/2a.png)
 
-	Role - Search for Storage Blob Data Contributor
-	Select - Search for your user and select it
+`Role` - Search for Storage Blob Data Contributor
 
-    Click Save
+`Select` - Search for your user and select it
+
+Click Save
 
 ![Step 2b](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/2b.png)
 
@@ -87,7 +90,9 @@ Create a folder called `SeattlePublicLibrary` in the capture container on the st
 
 Download the Seattle Public Library datasets from [https://data.seattle.gov/](https://data.seattle.gov/browse?q=Seattle%20Public%20Libraries&sortBy=most_accessed&utf8=%E2%9C%93) and copy the Seattle Public Datasets as csv files into the SeattlePublicLibrary folder in the capture container.
 
-Click on the Export button for:
+Click on the Export button for these files:
+
+#### Table of Sources
 
 | Name | File | Download URL | Size (as of 6/2021) |
 | :------------- | :----------: | :----------: | :------------- |
@@ -118,20 +123,124 @@ Or the Data Linked Storage accounts in Azure Synapse Analytics Studio.
 You can install [Microsoft Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer/) on an Azure Windows Server VM, or use [AzCopy](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10).  The advantage of this option is that you could have faster network access from an Azure VM for the download and if the VM is in the same region as your Synapse deployment the copy to the Storage account using Microsoft Azure Storage Explorer will be faster.
 `Note that Microsoft Azure Storage Explorer uses AzCopy but provides a GUI interface vs using the Azure CLI`
 
-#### Option 3 - Learn how to use a Synapse Pipeline to move the files with HTTP connection in a Copy Activity
+#### Option 3 - Learn how to use a Synapse Copy Data tool to move the files with HTTP connection in a Copy Activity
 
-`Note this option would be best when you want to connect the Copy activity to a notebook activities later to make a more realistic pipeline that could be scheduled`
+`Note this option would be best when you want to connect the Copy activity to a Notebook activity (and other things like a Data flow) later to make a more realistic pipeline that could be scheduled`
+
+In the Synapse Studio click on the Integrate section and click the + and choose `Copy Data tool`
 
 ![Step 3d](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/3d.png)
 
-### Step 4 - Open up Synapse Studio and navigate to the Data section (right below Home) and click the Linked tab, open the ADLS Gen2 storage and see if the csv files are in the capture container
+Select `Built-in copy task` and click Next
 
-Step 5 - Import the 4 Spark Notebooks from the Develop section in Synapse Studio.  Import these Notebooks:
+![Step 3e](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/3e.png)
 
-	- LoadCheckouts_By_Title__Physical_Items_FromCaptureToParquetComposeWithPySpark.ipynb
-	- LoadCheckouts_by_Title_FromCaptureToParquetComposeWithPySpark.ipynb
-	- LoadIntegrated_Library_System__ILS__Data_Dictionary_FromCaptureToParquetComposeWithPySpark.ipynb
-	- LoadLibrary_Collection_InventoryFromCaptureToParquetComposeWithPySpark.ipynb
+Source type - Select HTTP and click + Create new connection
+
+![Step 3f](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/3f.png)
+
+`Name` - HttpServerSPL
+`Base URL` - https://data.seattle.gov/api/views/
+`Authentication type` - Anonymous
+
+Click Create
+
+![Step 3g](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/3g.png)
+
+Select `More` link next to Connection failed and then click on 
+`Edit interactive authoring` link
+
+![Step 3h](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/3h.png)
+
+Choose the `Enable` radio button to enable Interactive authoring and click Apply
+
+![Step 3i](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/3i.png)
+
+Once Interactive authoring enabled green click Next
+
+![Step 3j](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/3j.png)
+
+Add the rest of the Relitive URL from the Download URL column in the [Table of Sources](https://github.com/DataSnowman/analytics-accelerator/blob/main/workspace/synapse-workspace/README.md#table-of-sources) table (i.e. `tmmm-ytt6/rows.csv?accessType=DOWNLOAD`)
+
+`Request method` - GET
+
+Click Next
+
+![Step 3k](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/3k.png)
+
+Select `First row has header`
+
+![Step 3l](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/3l.png)
+
+Select `Preview data` and then x to close
+
+![Step 3m](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/3m.png)
+
+Click Next
+
+Select `Target type` Azure Data Lake Storage Gen2 and click + Create new connection
+
+![Step 3n](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/3n.png)
+
+`Name` - AzureDataLakeStorageSPLcapture
+`Authentication method` - Account key (or your choose Auth method)
+`Azure subscription` - Choose you subscription
+`Storage account name` - Choose the storage account deployed by the Analytics Accelerator
+
+Test connection and click Create
+
+![Step 3o](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/3o.png)
+
+Enter of Browse to the 
+`Folder path` capture/SeattlePublicLibrary
+`File name` - Checkouts_by_Title.csv
+
+Click Next
+
+![Step 3p](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/3p.png)
+
+Select Add header to file and click Next
+
+![Step 3q](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/3q.png)
+
+Change the `Task name` to CopyPipeline_spl (or something similar) and click Next
+
+![Step 3r](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/3r.png)
+
+Click Next
+
+![Step 3s](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/3s.png)
+
+Click Finish
+
+![Step 3t](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/3t.png)
+
+Click on Monitor to see the Copy pipeline running
+
+![Step 3u](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/3u.png)
+
+Click on the name of the pipeline to view the progress
+
+![Step 3v](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/3v.png)
+
+Click on the glasses symbol to see details
+
+![Step 3w](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/3w.png)
+
+### Step 4 - Monitor if file(s) have copied into storage account
+
+Open up Synapse Studio and navigate to the Data section (right below Home) and click the Linked tab, open the ADLS Gen2 storage and see if the csv files are in the capture container.  You will see the file beginning to copy
+
+![Step 4a](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/4a.png)
+
+### Step 5 - Import the 4 Spark Notebooks from the Develop section in Synapse Studio.  
+
+Import these Notebooks:
+
+1. LoadCheckouts_By_Title__Physical_Items_FromCaptureToParquetComposeWithPySpark.ipynb
+2. LoadCheckouts_by_Title_FromCaptureToParquetComposeWithPySpark.ipynb
+3. LoadIntegrated_Library_System__ILS__Data_Dictionary_FromCaptureToParquetComposeWithPySpark.ipynb
+4. LoadLibrary_Collection_InventoryFromCaptureToParquetComposeWithPySpark.ipynb
 
 Make Sure you pick the 2.4 or 3.0 version depending on which version of the Spark pool you are using (changes in data parsing formats, and comments on Spark SQL throwing an error)
 
