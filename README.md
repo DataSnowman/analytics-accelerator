@@ -1,10 +1,14 @@
 # Azure Analytics Accelerator
 
-The following sections can be used to deploy an Azure Synapse Analytics Workspace and/or an Azure Machine Learning Workspace into the same Azure Resource Group or different Azure Resource Groups.
+The following sections can be used to deploy an Azure Synapse Analytics Workspace and/or an Azure Machine Learning Workspace into the same Azure Resource Group or different Azure Resource Groups.  It will allow you to explore the some of the Data Lake and Datawarehousing capabilities available on Microsoft Azure. 
 
 ## Purpose
 
-This template allows the Administrator to deploy an Analytics Accelerator environment of Azure Synapse Analytics with some pre-set parameters and Azure Machine Learning. This allows more time to focus on hands on keyboard and learn about these Azure services.
+The purpose of thie Analytics Accellerator is to help you Learn Hands-on how to use data integration pipelines, Spark notebooks, and SQL Scripts in Azure Synaspe Analytics. This accelerator provides an examples using [Seattle Public Library](https://data.seattle.gov/browse?q=Seattle%20Public%20Libraries&sortBy=most_accessed&utf8=%E2%9C%93) public csv datasets, that are captured on ADLS and composed into parquet files, Spark tables, Serverless external tables, and Dedicated SQL pool tables, then consumed using SQL.  This accellerator should allow you more time to focus on hands on keyboard and learn about these Azure services:
+
+* [Azure Synapse Analytics](https://github.com/DataSnowman/analytics-accelerator#deploy-an-azure-synapse-analytics-workspace)
+
+* [Azure Machine Learning](https://github.com/DataSnowman/analytics-accelerator#deploy-an-azure-machine-learning-workspace)
 
 Using the Getting Started wizard inside of the workspace is recommended to use sample data if you do not have your own to the Storage Account.
 
