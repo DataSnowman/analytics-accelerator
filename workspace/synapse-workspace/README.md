@@ -235,21 +235,102 @@ Open up Synapse Studio and navigate to the Data section (right below Home) and c
 
 ### Step 5 - Import the 4 Spark Notebooks from the Develop section in Synapse Studio.  
 
-Import these Notebooks:
+Import these Notebooks from this [GitHub Repo](https://github.com/DataSnowman/analytics-accelerator/tree/main/code/notebooks)
 
-1. LoadCheckouts_By_Title__Physical_Items_FromCaptureToParquetComposeWithPySpark.ipynb
-2. LoadCheckouts_by_Title_FromCaptureToParquetComposeWithPySpark.ipynb
-3. LoadIntegrated_Library_System__ILS__Data_Dictionary_FromCaptureToParquetComposeWithPySpark.ipynb
-4. LoadLibrary_Collection_InventoryFromCaptureToParquetComposeWithPySpark.ipynb
+Make Sure you pick the 2.4 or 3.0 version depending on which version of the Spark pool you are using (changes in data parsing formats, and comments on Spark SQL throwing an error).  Choose appropriately depending if your chose a Spark 2.4 version pool or Spark 3.0 version pool.
 
-Make Sure you pick the 2.4 or 3.0 version depending on which version of the Spark pool you are using (changes in data parsing formats, and comments on Spark SQL throwing an error)
+[Spark 2.4 Notebooks](https://github.com/DataSnowman/analytics-accelerator/tree/main/code/notebooks/Spark2dot4Notebooks)
 
-Step 6 - Open up each notebook and find the storage account name "splacceler5lmevhdeon4ym" in the cells of each notebook and replace it with the name of your storage account.  
-             The storage account name is in the 1st, 3rd, 7th, and 11th cell of each notebook.  
+1. LoadCheckouts_By_Title__Physical_Items_FromCaptureToParquetComposeWithPySpark2.ipynb
+2. LoadCheckouts_by_Title_FromCaptureToParquetComposeWithPySpark2.ipynb
+3. LoadIntegrated_Library_System__ILS__Data_Dictionary_FromCaptureToParquetComposeWithPySpark2.ipynb
+4. LoadLibrary_Collection_InventoryFromCaptureToParquetComposeWithPySpark2.ipynb
 
-Step 7 - Run each notebook (with Run all or a cell at a time if you want to learn what is going on) to create parquet files in the compose container in storage and also create Spark tables
 
-Step 8 - Run Select Top 100 rows query on the spark tables
+[Spark 3.0 Notebooks](https://github.com/DataSnowman/analytics-accelerator/tree/main/code/notebooks/Spark3dot0Notebooks)
+
+1. LoadCheckouts_By_Title__Physical_Items_FromCaptureToParquetComposeWithPySpark3.ipynb
+2. LoadCheckouts_by_Title_FromCaptureToParquetComposeWithPySpark3.ipynb
+3. LoadIntegrated_Library_System__ILS__Data_Dictionary_FromCaptureToParquetComposeWithPySpark3.ipynb
+4. LoadLibrary_Collection_InventoryFromCaptureToParquetComposeWithPySpark3.ipynb
+
+To import the notebooks into Synapse in the Develop Section and click on + and choose `Import`
+
+![Step 5a](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/5a.png)
+
+Navigate to where you have the notebooks, select them, and click open
+
+![Step 5b](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/5b.png)
+
+The Notebook should look something like this when attached to Spark Pool `Synasp1`
+
+![Step 5c](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/5c.png)
+
+### Step 6 - Open up each notebook and edit and publish 
+
+Find the storage account name `spkaccelerjqvse6bhhchxi` in the cells of each notebook and replace it with the name of your storage account deployed by this Analytics Accelerator
+
+`Note: The storage account name is in the 1st, 3rd, 7th, and 11th cell of each notebook`
+
+Update the storage account in all of the cells necessary by searching in the browser for `spkaccelerjqvse6bhhchxi` and replacing with the name of your deployed storage account name.  In my case `allaccelerjyysgquoryocq`
+
+Cell 1
+
+![Step 6a](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/6a.png)
+
+Becomes
+
+![Step 6b](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/6b.png)
+
+Cell 3
+
+![Step 6c](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/6c.png)
+
+Becomes
+
+![Step 6d](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/6d.png)
+
+Cell 7
+
+![Step 6e](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/6e.png)
+
+Becomes
+
+![Step 6f](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/6f.png)
+
+Cell 11
+
+![Step 6g](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/6g.png)
+
+Becomes
+
+![Step 6h](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/6h.png)
+
+Publish all the changes to the Notebook
+
+Click on `Publish all`
+
+![Step 6i](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/6i.png)
+
+Click `Publish`
+
+![Step 6j](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/6j.png)
+
+### Step 7 - Run each notebook
+
+Run with Run all or a cell at a time if you want to learn what is going on) to create parquet files in the compose container in storage and also create Spark tables
+
+Click `Run all` or run the notebook a cell at a time to understand what it is doing
+
+![Step 7a](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/7a.png)
+
+In general the notebook reads the csv file from capture container into a dataframe with a defined schema, transforms some columns, writes the file out as a parquet files in the compose container, and then creates a Spark table from the parquet files.
+
+### Step 8 - Run Select Top 100 rows query on the spark table(s)
+
+Once all the cells in the notebook have successfully run you should have a new Spark database called `seattlepubliclibrary` and a spark table called `checkouts_by_title_physical_items` that can be queried using SQL Serverless
+
+![Step 8a](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/8a.png)
 
 Step 9 - Create External tables on Compose Parquet files to load to SQL Pool
 
