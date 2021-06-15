@@ -12,6 +12,10 @@ Using the Getting Started wizard inside of the workspace is recommended to use s
 
 - Owner to the Azure Subscription being deployed. This is for creation of a separate Analytics Accelerator Resource Group(s) and to delegate roles necessary for this deployment.
 
+## Post Deployment - Important step needed to use this Analytics Accelerator
+
+[Synapse Analytics Post Deployment](https://github.com/DataSnowman/analytics-accelerator/blob/main/workspace/synapse-workspace/README.md#post-deployment-steps)
+
 ## Deploy an Azure Synapse Analytics Workspace
 
 This template deploys necessary resources to run an Azure Synapse Analytics Workspace.
@@ -35,10 +39,6 @@ This template deploys the following:
 - A Logic App to Resume the SQL Pool at defined schedule
 - Both Logic App managed identities are given Contributor rights to the Resource Group
 - Grants the Workspace identity CONTROL to all SQL pools and SQL on-demand pool
-
-## Post Deployment
-
-[Synapse Analytics Post Deployment](https://github.com/DataSnowman/analytics-accelerator/blob/main/workspace/synapse-workspace/README.md#post-deployment-steps)
 
 ## Deploy an Azure Machine Learning Workspace
 
