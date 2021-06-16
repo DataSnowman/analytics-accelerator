@@ -61,3 +61,13 @@ This template deploys the following:
 - KeyVault
 - Applications Insights
 
+## Deploy an Azure Databricks Workspace along with Azure Data Factory, and Azure SQL Database
+
+[![Deploy To Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FDataSnowman%2Fanalytics-accelerator%2Fmain%2Fworkspace%2Fadb-workspace%2Fazuredeploy.json) [![Visualize](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.svg?sanitize=true)](http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2FDataSnowman%2Fanalytics-accelerator%2Fmain%2Fworkspace%2Fadb-workspace%2Fazuredeploy.json)
+
+This template deploys the following:
+
+- Azure Databricks Workspace
+- Storage Account
+- Azure SQL Database
+- Azure Data Factory
