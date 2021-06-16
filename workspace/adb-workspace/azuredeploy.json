@@ -9,6 +9,19 @@
                 "description": "Short Prefix (10 characters or less) for all resources created by this template"
             }
         },
+        "deploymentType": {
+            "type": "string",
+            "defaultValue": "acceler",
+            "allowedValues": [
+                "devtest",
+                "acceler",
+                "prod",
+                "shared"
+                ],
+            "metadata": {
+                "description": "Specify deployment type: DevTest, AnalyticsAccelerator, Prod, Shared. This will also be used in the naming convention."
+                }
+        },
         "location": {
             "type": "string",
             "defaultValue": "[resourceGroup().location]",
