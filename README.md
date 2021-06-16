@@ -72,6 +72,6 @@ This template deploys the following:
 This template deploys the following:
 
 - Azure Databricks Workspace
-- Storage Account
-- Azure SQL Database
+- Azure Data Lake Storage Gen2
 - Azure Data Factory
+- Azure SQL Database
