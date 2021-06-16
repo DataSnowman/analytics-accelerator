@@ -95,7 +95,7 @@
             }
           },
           {
-            "name": "[concat('default/', 'capture')]",
+            "name": "[concat('default/', 'bronze')]",
             "type": "blobServices/containers",
             "apiVersion": "2019-06-01",
             "dependsOn": [
@@ -106,7 +106,7 @@
             }
           },
           {
-            "name": "[concat('default/', 'compose')]",
+            "name": "[concat('default/', 'silver')]",
             "type": "blobServices/containers",
             "apiVersion": "2019-06-01",
             "dependsOn": [
@@ -117,7 +117,7 @@
             }
           },
           {
-            "name": "[concat('default/', 'comsume')]",
+            "name": "[concat('default/', 'gold')]",
             "type": "blobServices/containers",
             "apiVersion": "2019-06-01",
             "dependsOn": [

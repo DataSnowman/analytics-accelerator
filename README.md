@@ -10,6 +10,8 @@ The purpose of thie Analytics Accellerator is to help you Learn Hands-on how to 
 
 * [Azure Machine Learning](https://github.com/DataSnowman/analytics-accelerator#deploy-an-azure-machine-learning-workspace)
 
+* [Azure Databricks](https://github.com/DataSnowman/analytics-accelerator#deploy-an-azure-databricks-workspace)
+
 Using the Getting Started wizard inside of the workspace is recommended to use sample data if you do not have your own to the Storage Account.
 
 ## Prerequisites
@@ -61,7 +63,9 @@ This template deploys the following:
 - KeyVault
 - Applications Insights
 
-## Deploy an Azure Databricks Workspace along with Azure Data Factory, and Azure SQL Database
+## Deploy an Azure Databricks Workspace
+
+`Together with Azure Data Lake Storage Gen2, Azure Data Factory, and Azure SQL Database`
 
 [![Deploy To Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FDataSnowman%2Fanalytics-accelerator%2Fmain%2Fworkspace%2Fadb-workspace%2Fazuredeploy.json) [![Visualize](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.svg?sanitize=true)](http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2FDataSnowman%2Fanalytics-accelerator%2Fmain%2Fworkspace%2Fadb-workspace%2Fazuredeploy.json)
 
