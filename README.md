@@ -17,11 +17,12 @@ This [GitHub Repository](https://github.com/DataSnowman/analytics-accelerator) a
 
 This accelerator provides an examples of common use cases using things like [Seattle Public Library](https://data.seattle.gov/browse?q=Seattle%20Public%20Libraries&sortBy=most_accessed&utf8=%E2%9C%93) public csv datasets (and other datasets), that are captured on ADLS and composed into parquet files, Spark tables, Serverless external tables, and Dedicated SQL pool tables, then consumed using SQL. 
 
-| Use Case Name | Use Case Type | Dataset | Description | Code | Instruction Steps |
-| :------------- | :----------: | :----------: | :----------: | :----------: | :----------: |
-| Seattle Public Library | Data Lake / Data Warehouse | [Seattle Public Library](https://data.seattle.gov/browse?q=Seattle%20Public%20Libraries&sortBy=most_accessed&utf8=%E2%9C%93) | Public csv datasets that are captured on ADLS and composed into parquet files, Spark tables, Serverless external tables, and Dedicated SQL pool tables, then consumed using SQL. | [Code](https://github.com/DataSnowman/analytics-accelerator/tree/main/usecases/spl/code) | [Steps](https://github.com/DataSnowman/analytics-accelerator/blob/main/workspace/synapse-workspace/usecasesteps.md#seattle-public-library-csv-files) |
-| Car Price | AutoML | UCI | UCI autos dataset | [Code]() | [Steps]() |
-| Student Success | AutoML | UCI | UCI StudentMath dataset | [Code]() | [Steps]() |
+| Deployment | Use Case Name | Use Case Type | Dataset | Description | Code | Instruction Steps |
+| :------------- | :----------: | :----------: | :----------: | :----------: | :----------: | :----------: |
+| [Azure Synapse Analytics](https://github.com/DataSnowman/analytics-accelerator#deploy-an-azure-synapse-analytics-workspace) | Seattle Public Library | Data Lake / Data Warehouse | [Seattle Public Library](https://data.seattle.gov/browse?q=Seattle%20Public%20Libraries&sortBy=most_accessed&utf8=%E2%9C%93) | Public csv datasets that are captured on ADLS and composed into parquet files, Spark tables, Serverless external tables, and Dedicated SQL pool tables, then consumed using SQL. | [Code](https://github.com/DataSnowman/analytics-accelerator/tree/main/usecases/spl/code) | [Steps](https://github.com/DataSnowman/analytics-accelerator/blob/main/workspace/synapse-workspace/usecasesteps.md#seattle-public-library-csv-files) |
+| [Azure Machine Learning](https://github.com/DataSnowman/analytics-accelerator#deploy-an-azure-machine-learning-workspace) | Car Price | AutoML | UCI | UCI autos dataset | [Code]() | [Steps]() |
+| [Azure Machine Learning](https://github.com/DataSnowman/analytics-accelerator#deploy-an-azure-machine-learning-workspace) | Student Success | AutoML | UCI | UCI StudentMath dataset | [Code]() | [Steps]() |
+
 
 ## Azure Analytics Services
 
