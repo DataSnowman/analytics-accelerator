@@ -1,10 +1,31 @@
 # Azure Analytics Accelerator
 
-The following sections can be used to deploy an Azure Synapse Analytics Workspace and/or an Azure Machine Learning Workspace into the same Azure Resource Group or different Azure Resource Groups.  It will allow you to explore the some of the Data Lake and Datawarehousing capabilities available on Microsoft Azure. 
+The following sections can be used to deploy an `Azure Synapse Analytics Workspace` and/or an `Azure Machine Learning Workspace` and/or an `Azure Databricks Workspace` into the same Azure Resource Group or different Azure Resource Groups.  It will allow you to explore some of the Data Lake, Data Lakehouse, and Data Warehousing capabilities available on Microsoft Azure. 
 
 ## Purpose
 
-The purpose of thie Analytics Accellerator is to help you Learn Hands-on how to use data integration pipelines, Spark notebooks, and SQL Scripts in Azure Synaspe Analytics. This accelerator provides an examples using [Seattle Public Library](https://data.seattle.gov/browse?q=Seattle%20Public%20Libraries&sortBy=most_accessed&utf8=%E2%9C%93) public csv datasets, that are captured on ADLS and composed into parquet files, Spark tables, Serverless external tables, and Dedicated SQL pool tables, then consumed using SQL.  This accellerator should allow you more time to focus on hands on keyboard and learn about these Azure services:
+The purpose of this Analytics Accellerator is to help you learn and grow through Hands-on common use cases that show you how to use things like data integration pipelines, Spark notebooks, and SQL Scripts in Azure Synaspe Analytics, and/or ADF pipelines, and/or Azure Databricks notebooks, and/or Azure Machine Learning AutoML.
+
+This [GitHub Repository](https://github.com/DataSnowman/analytics-accelerator) along with an Azure Subscription [No Azure Subscription click here](https://azure.microsoft.com/en-us/free/) should allow you to accelerate:
+
+* Skilling
+* Proof of Concepts
+* Architecture choice
+* Infrastructure as code for PoC, Dev, Test, Prod
+
+## Common Use Cases
+
+This accelerator provides an examples of common use cases using things like [Seattle Public Library](https://data.seattle.gov/browse?q=Seattle%20Public%20Libraries&sortBy=most_accessed&utf8=%E2%9C%93) public csv datasets (and other datasets), that are captured on ADLS and composed into parquet files, Spark tables, Serverless external tables, and Dedicated SQL pool tables, then consumed using SQL. 
+
+| Use Case Name | Use Case Type | Dataset | Description | Code | Instruction Steps |
+| :------------- | :----------: | :----------: | :----------: | :----------: | :----------: |
+| Seattle Public Library | Data Lake / Data Warehouse | [Seattle Public Library](https://data.seattle.gov/browse?q=Seattle%20Public%20Libraries&sortBy=most_accessed&utf8=%E2%9C%93) | Public csv datasets that are captured on ADLS and composed into parquet files, Spark tables, Serverless external tables, and Dedicated SQL pool tables, then consumed using SQL. | [Code](https://github.com/DataSnowman/analytics-accelerator/tree/main/usecases/spl/code) | [Steps](https://github.com/DataSnowman/analytics-accelerator/blob/main/workspace/synapse-workspace/usecasesteps.md#seattle-public-library-csv-files) |
+| Car Price | AutoML | UCI | UCI autos dataset | [Code]() | [Steps]() |
+| Student Success | AutoML | UCI | UCI StudentMath dataset | [Code]() | [Steps]() |
+
+## Azure Analytics Services
+
+This accellerator should allow you more time to focus on hands on keyboard and learn about these Azure Analytics Services:
 
 * [Azure Synapse Analytics](https://github.com/DataSnowman/analytics-accelerator#deploy-an-azure-synapse-analytics-workspace)
 
@@ -22,7 +43,7 @@ Using the Getting Started wizard inside of the workspace is recommended to use s
 
 ```***Remember to come back to this link above after the deployment has completed***```
 
-[Synapse Analytics Post Deployment](https://github.com/DataSnowman/analytics-accelerator/blob/main/workspace/synapse-workspace/README.md#post-deployment-steps)
+[Synapse Analytics Post Deployment](https://github.com/DataSnowman/analytics-accelerator/blob/main/workspace/synapse-workspace/postdeploy.md#post-deployment-steps)
 
 ## Deploy an Azure Synapse Analytics Workspace
 
