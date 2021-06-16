@@ -46,6 +46,8 @@
         "stgVersion": "2015-06-15",
         "storageAccountType": "Standard_LRS",
         "storageAccountName": "[concat(parameters('deploymentTla'), uniqueString(subscription().subscriptionId))]",
+        "dlsName": "[toLower(concat(parameters('deploymentTla'),parameters('deploymentType'),uniqueString(resourceGroup().id)))]",
+        "dlsFsName": "[toLower(concat(variables('dlsName'),'fs1'))]",
         "adbworkspaceName": "[concat(parameters('deploymentTla'), uniqueString(subscription().subscriptionId))]",
         "adbtier": "premium",
         "managedResourceGroupName": "[concat('databricks-rg-', variables('adbworkspaceName'), '-', uniqueString(variables('adbworkspaceName'), resourceGroup().id))]",
@@ -54,14 +56,66 @@
         "adfName":"[concat(parameters('deploymentTla'),variables('uniqueNamePrefix'),'adf')]"
     },
     "resources": [{
-            "name": "[variables('storageAccountName')]",
-            "type": "Microsoft.Storage/storageAccounts",
-            "location": "[parameters('location')]",
-            "apiVersion": "[variables('stgVersion')]",
-            "properties": {
-                "accountType": "[variables('storageAccountType')]"
-            }
+        "type": "Microsoft.Storage/storageAccounts",
+        "apiVersion": "2019-06-01",
+        "name": "[variables('dlsName')]",
+        "location": "[parameters('location')]",
+        "sku": {
+          "name": "Standard_LRS"
         },
+        "kind": "StorageV2",
+        "properties": {
+          "accessTier": "Hot",
+          "supportsHttpsTrafficOnly": true,
+          "isHnsEnabled": true
+        },
+        "resources": [
+          {
+            "name": "[concat('default/', variables('dlsFsName'))]",
+            "type": "blobServices/containers",
+            "apiVersion": "2019-06-01",
+            "dependsOn": [
+              "[variables('dlsName')]"
+            ],
+            "properties": {
+              "publicAccess": "None"
+            }
+          },
+          {
+            "name": "[concat('default/', 'capture')]",
+            "type": "blobServices/containers",
+            "apiVersion": "2019-06-01",
+            "dependsOn": [
+              "[variables('dlsName')]"
+            ],
+            "properties": {
+              "publicAccess": "None"
+            }
+          },
+          {
+            "name": "[concat('default/', 'compose')]",
+            "type": "blobServices/containers",
+            "apiVersion": "2019-06-01",
+            "dependsOn": [
+              "[variables('dlsName')]"
+            ],
+            "properties": {
+              "publicAccess": "None"
+            }
+          },
+          {
+            "name": "[concat('default/', 'comsume')]",
+            "type": "blobServices/containers",
+            "apiVersion": "2019-06-01",
+            "dependsOn": [
+              "[variables('dlsName')]"
+            ],
+            "properties": {
+              "publicAccess": "None"
+            }
+          }
+        ]
+      },
         {
         "name": "[variables('sqlServerName')]",
         "type": "Microsoft.Sql/servers",
