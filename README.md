@@ -8,6 +8,8 @@ The purpose of this Analytics Accellerator is to help you learn and grow through
 
 This [GitHub Repository](https://github.com/DataSnowman/analytics-accelerator) along with an Azure Subscription [No Azure Subscription click here](https://azure.microsoft.com/en-us/free/) should allow you to accelerate:
 
+* Business Value
+* Time-to-insight
 * Skilling
 * Proof of Concepts
 * Architecture choice
