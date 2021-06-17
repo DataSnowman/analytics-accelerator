@@ -182,7 +182,7 @@ To import the notebooks into Synapse in the Develop Section and click on + and c
 
 ![Step 5a](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/5a.png)
 
-Navigate to where you have the notebooks, select them, and click open
+Navigate to where you have the downloaded the notebooks [Or Find Here](https://github.com/DataSnowman/analytics-accelerator/tree/main/usecases/spl/code/notebooks), select them, and click open
 
 ![Step 5b](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/5b.png)
 
@@ -272,8 +272,9 @@ This will create a script that looks like this:
 
 ![Step 9c](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/9c.png)
 
-Here is the script with a wild card to access all the parquet files
+[Here](https://github.com/DataSnowman/analytics-accelerator/blob/main/usecases/spl/code/sqlscripts/ServerlessExternalcheckouts_by_title_physical_items.sql) is the script with a wild card to access all the parquet files
 
+```
 IF NOT EXISTS (SELECT * FROM sys.external_file_formats WHERE name = 'SynapseParquetFormat') 
 	CREATE EXTERNAL FILE FORMAT [SynapseParquetFormat] 
 	WITH ( FORMAT_TYPE = PARQUET)
@@ -308,6 +309,7 @@ GO
 
 SELECT TOP 100 * FROM checkouts_by_title_physical_items
 GO
+```
 
 Remember to use a * wildcard in the LOCATION so the table is made on all of the files and not just one.  It looks like this:
 
@@ -349,8 +351,9 @@ This will create a script that looks like this:
 
 ![Step 9f](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/9f.png)
 
-Here is the script with a wild card to access all the parquet files
+[Here](https://github.com/DataSnowman/analytics-accelerator/blob/main/usecases/spl/code/sqlscripts/DedicatedSQLcheckouts_by_title_physical_items_dp.sql) is the script with a wild card to access all the parquet files:
 
+```
 IF NOT EXISTS (SELECT * FROM sys.objects O JOIN sys.schemas S ON O.schema_id = S.schema_id WHERE O.NAME = 'checkouts_by_title_physical_items_dp' AND O.TYPE = 'U' AND S.NAME = 'dbo')
 CREATE TABLE dbo.checkouts_by_title_physical_items_dp
 	(
@@ -393,6 +396,7 @@ GO
 
 SELECT TOP 100 * FROM dbo.checkouts_by_title_physical_items_dp
 GO
+```
 
 Remember to use a * wildcard in the LOCATION so the table is made on all of the files and not just one.  It looks like this:
 
