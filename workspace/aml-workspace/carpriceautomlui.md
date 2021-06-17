@@ -19,9 +19,42 @@
 
 ![dsname](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/dsname.png)
 
-5. Select or create a datastore: workspaceblobstore and Upload files (navigate to the carprice.csv file [Here]()in this repo)
+5. Select or create a datastore: workspaceblobstore and Upload files (navigate to the carprice.csv file [Here](https://github.com/DataSnowman/analytics-accelerator/blob/main/usecases/carprice/dataset/carprice.csv)in this repo)
+Click Next
 
 ![upload](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/upload.png)
+
+6. Preview the dataset and click Next
+
+![previewds](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/previewds.png)
+
+7. Make sure that price is of type Integer (Mine was seen a String and I had to change it to Integer) and click Next
+
+![priceint](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/priceint.png)
+
+8. Click Create
+
+![createbtn](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/createbtn.png)
+
+9. Select the carprice dataset and click Next
+
+![configrun](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/configrun.png)
+
+10. Click on Create a new compute or (select a compute cluster you already have and jump to [step ?]()
+
+![createnewcomp](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/createnewcomp.png)
+
+11. Go with the default for compute as in image (or close to) and click Next
+
+![defaultcomp](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/defaultcomp.png)
+
+12. Compute name: automl and Max number of nodes: 4 and click Create.  It will take a few minutes to create the compute cluster
+
+![automl4](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/automl4.png)
+
+#### 13. You Configuration is now complete
+        Click Next
+![configcomplete](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/configcomplete.png)
 
 
 ![createexp](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/createexp.png)
