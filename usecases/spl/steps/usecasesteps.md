@@ -1,8 +1,8 @@
 ## Seattle Public Library CSV files
 
-### [Step 1 Setup Managed Private Endpoint](https://github.com/DataSnowman/analytics-accelerator/blob/main/workspace/synapse-workspace/postdeploy.md#step-1-setup-managed-private-endpoint)
+### [Step 1 Setup Managed Private Endpoint](https://github.com/DataSnowman/analytics-accelerator/blob/main/usecases/spl/steps/postdeploy.md#step-1-setup-managed-private-endpoint)
 
-### [Step 2 - Assign your user to Storage Blob Data Contributor role](https://github.com/DataSnowman/analytics-accelerator/blob/main/workspace/synapse-workspace/postdeploy.md#step-2-Assign-your-user-to-storage-blob-data-contributor-role)
+### [Step 2 - Assign your user to Storage Blob Data Contributor role](https://github.com/DataSnowman/analytics-accelerator/blob/main/usecases/spl/steps/postdeploy.md#step-2-Assign-your-user-to-storage-blob-data-contributor-role)
 
 ### Step 3 Create a folder in the capture container and download/copy files
 
