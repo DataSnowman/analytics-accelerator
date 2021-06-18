@@ -1,4 +1,4 @@
-## Car Price Steps
+## Car Price Steps 
 
 ### [Car Price using Automated ML UI](https://github.com/DataSnowman/analytics-accelerator/blob/main/usecases/carprice/steps/carpriceautomlui.md)
 
