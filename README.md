@@ -21,8 +21,8 @@ This accelerator provides an examples of common use cases using things like [Sea
 
 | Deployment | Use Case Name | Use Case Type | Dataset | Description | Code | Instruction Steps |
 | :------------- | :----------: | :----------: | :----------: | :----------: | :----------: | :----------: |
-| [Azure Synapse Analytics](https://github.com/DataSnowman/analytics-accelerator#deploy-an-azure-synapse-analytics-workspace) | Seattle Public Library | Data Lake / Data Warehouse | [Seattle Public Library](https://data.seattle.gov/browse?q=Seattle%20Public%20Libraries&sortBy=most_accessed&utf8=%E2%9C%93) CSV | Public csv datasets that are captured on ADLS and composed into parquet files, Spark tables, Serverless external tables, and Dedicated SQL pool tables, then consumed using SQL. | [Code](https://github.com/DataSnowman/analytics-accelerator/tree/main/usecases/spl/code) | [Steps](https://github.com/DataSnowman/analytics-accelerator/blob/main/workspace/synapse-workspace/usecasesteps.md#seattle-public-library-csv-files) |
-| [Azure Machine Learning](https://github.com/DataSnowman/analytics-accelerator#deploy-an-azure-machine-learning-workspace) | Car Price | AutoML | UC Irvine Machine Learning Repository | [Automobile Data Set](https://archive.ics.uci.edu/ml/datasets/automobile) | TBD [Code]() | TBD [Steps]() |
+| [Azure Synapse Analytics](https://github.com/DataSnowman/analytics-accelerator#deploy-an-azure-synapse-analytics-workspace) | Seattle Public Library | Data Lake / Data Warehouse | [Seattle Public Library](https://data.seattle.gov/browse?q=Seattle%20Public%20Libraries&sortBy=most_accessed&utf8=%E2%9C%93) CSV | Public csv datasets that are captured on ADLS and composed into parquet files, Spark tables, Serverless external tables, and Dedicated SQL pool tables, then consumed using SQL. | [Code](https://github.com/DataSnowman/analytics-accelerator/tree/main/usecases/spl/code) | [Steps](https://github.com/DataSnowman/analytics-accelerator/blob/main/usecases/spl/steps/usecasesteps.md#seattle-public-library-csv-files) |
+| [Azure Machine Learning](https://github.com/DataSnowman/analytics-accelerator#deploy-an-azure-machine-learning-workspace) | Car Price | AutoML | UC Irvine Machine Learning Repository | [Automobile Data Set](https://archive.ics.uci.edu/ml/datasets/automobile) | TBD [Code](https://github.com/DataSnowman/analytics-accelerator/tree/main/usecases/carprice/code) | TBD [Steps](https://github.com/DataSnowman/analytics-accelerator/tree/main/usecases/carprice/steps/) |
 | [Azure Machine Learning](https://github.com/DataSnowman/analytics-accelerator#deploy-an-azure-machine-learning-workspace) | Student Success | AutoML | UC Irvine Machine Learning Repository | [UCI Student Performance Data Set](http://archive.ics.uci.edu/ml/datasets/Student+Performance) | TBD [Code]() | TBD [Steps]() |
 | [Azure Databricks](https://github.com/DataSnowman/analytics-accelerator#deploy-an-azure-databricks-workspace) | Covid-19 | Azure Databricks | JHU Covid-19 | TBD | TBD [Code]() | TBD [Steps]() |
 
@@ -47,7 +47,7 @@ Using the Getting Started wizard inside of the workspace is recommended to use s
 
 ```***Remember to come back to this link above after the deployment has completed***```
 
-[Synapse Analytics Post Deployment](https://github.com/DataSnowman/analytics-accelerator/blob/main/workspace/synapse-workspace/postdeploy.md#post-deployment-steps)
+[Synapse Analytics Post Deployment](https://github.com/DataSnowman/analytics-accelerator/blob/main/usecases/spl/steps/postdeploy.md#post-deployment-steps)
 
 ## Deploy an Azure Synapse Analytics Workspace
 
