@@ -40,7 +40,7 @@ Click Next
 
 ![configrun](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/configrun.png)
 
-10. Click on Create a new compute or (select a compute cluster you already have and jump to [step ?]()
+10. Click on Create a new compute or (select a compute cluster you already have and jump to [step 13](https://github.com/DataSnowman/analytics-accelerator/blob/main/workspace/aml-workspace/carpriceautomlui.md#13-you-configuration-is-now-complete)
 
 ![createnewcomp](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/createnewcomp.png)
 
@@ -56,93 +56,53 @@ Click Next
         Click Next
 ![configcomplete](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/configcomplete.png)
 
+14. Select Regression and click Finish
 
-![createexp](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/createexp.png)
+![regress](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/regress.png)
 
-4.	Enter an Experiment name and click on Create a new compute
-
-![expname](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/expname.png)
-
-5.	Enter a Compute name, Select virtual machine size, set Minimum number of nodes to 0, set Maximum number of nodes to 6, and click Create
-
-![createcompute](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/createcompute.png)
-
-This may take a couple minutes
-
-![createnewcompute](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/createnewcompute.png)
-
-6.	Select a training compute and chose the new compute created above.  Click ``Next``
-
-![amlnext](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/amlnext.png)
-
-7.	Click on Upload to upload the carprice.csv you downloaded in the prerequisites. Or get it from the path where you cloned this GitHub repo.
-
-![uploaddataset](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/uploaddataset.png)
-
-8.	Select carprice.csv
-
-![selectcarprice](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/selectcarprice.png)
-
-9.	Preview the data.  You may need to have at least 1 node runnin on on ML compute to see the preview.
-
-![previewdata](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/previewdata.png)
-
-10.	Ignore the SYMBOLING and NORMALIZED-LOSSES columns (features) by clicking on the Included/Ignored slider
-
-![ignore](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/ignore.png)
-
-11.	Chose Regression for the prediction task and price for Target column.
-12.	Click ``Start``
-
-![start](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/start.png)
-
-13.	Let it run to finish to complete the experiment.  Do this the first time ahead of the demo to have a completed experiment.
+15.	Let it run to finish to complete the experiment.  
 
 ## Review the AutoML Experiment
 
-Once the AutoML experiment completes 
+Once the AutoML experiment completes (could take about 25 minutes)
 
 1.	Click on the Run ID of the completed experiment
 
 ![runid](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/runid.png)
 
-2.	View the Iteration Chart and view some of the point on the graph
+2. This takes you tho the run details.  Click on Models tab
 
-![ichart](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/ichart.png)
+![rundetails](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/rundetails.png)
 
-3.	Scroll down to the Iterations and talk about the models and their Spearman Correlation
+3.	Click on View explanation
 
-![spearman](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/spearman.png)
+![models](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/models.png)
 
-4.	Click on VotingEnsemble and look at the graph Predicted vs. True
+4.	Click on one of the explanation IDs
 
-![predvtrue](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/predvtrue.png)
+![explan](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/explan.png)
 
 ## Deploy AutoML Experiment carprice model
 
-1.	Scroll down and click on Deploy Model VotingEnsemble
+1.	Click on Deploy on the run page and then give the deployment a Name: carprice and Compute type: Azure Container Instance and click Deploy
 
-![voting](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/voting.png)
+![deploy](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/deploy.png)
 
-2. Deploy Model, enter a Deployment name and click the Deploy button.
+2. To see how the deployment is proceeding click on Endpoints in the Assets section of the AML service workspace to see the endpoint.  The deployment status will be transitioning until the endpoint is created and then it will change to Healthy
 
-``Note that if you click the Deploy button it is going to take 20 minutes to deploy the model.  You will also have to delete the deployment, so you are not charged on Azure to continue to run the compute in an Azure Container Instance (ACI)``
+![endpoint](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/endpoint.png)
 
-![deploymodel](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/deploymodel.png)
+![endpointdtl](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/endpointdtl.png)
 
-3. To see how the deployment is proceeding click on Images in the Assets section of the AML service workspace to see the image.  The status will be Running until the image is created and then it will change to Succeeded
+3. The Container instance will be deployed into the resource group  
 
-![deployedmage](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/deployedmage.png)
+![aci](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/aci.png)
 
-4. Once the image creation succeeds, to see how the deployment is proceeding click on Deployments in the Assets section of the AML service workspace to see the deployment.  
+4. The deployment status will change to Healthy
 
-![deployment](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/deployment.png)
+![healthy](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/healthy.png)
 
-5. After you are finished with the deployment you can delete the ACI deployment by clicking the box in front of the deployment and click on Delete.  ``Note that you will only want to do this after the Power BI part is completed``
-
-![deletedeployment](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/deletedeployment.png)
-
-6.	Consume the ACI web service in Power BI by clicking [here](https://github.com/Azure/carprice/tree/master/powerbi)
+5.	Consume the ACI web service in Power BI by clicking [here](https://github.com/Azure/carprice/tree/master/powerbi)
 
 
 
