@@ -10,7 +10,7 @@ Use these steps to build a car price model using the Azure ML Automated ML user 
 
 Use these steps to build a car price model using the Azure ML Jupyter Notebook experience
 
-### [Consuming the model using Power BI AI insights](https://github.com/DataSnowman/analytics-accelerator/blob/main/usecases/carprice/steps/carpricepowerbi.md)
+### [Consuming the model using Power BI AI insights](https://github.com/DataSnowman/analytics-accelerator/blob/main/usecases/carprice/steps/carpricepowerbidesktop.md)
 
 Use these steps to consume the car price model you built using Power BI AI insights
 
