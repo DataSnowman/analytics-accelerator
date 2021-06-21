@@ -42,7 +42,7 @@ This accelerator should allow you more time to focus on hands on keyboard and le
 
 * [Azure Databricks](https://github.com/DataSnowman/analytics-accelerator#deploy-an-azure-databricks-workspace)
 
-Using the Getting Started wizard inside of the workspace is recommended to use sample data if you do not have your own to the Storage Account.
+Use your own data, the [Common Use Cases](https://github.com/DataSnowman/analytics-accelerator#common-use-cases) above, or the Getting Started wizard inside of the workspace is recommended to use sample data if you do not have your own.
 
 ## Prerequisites
 
