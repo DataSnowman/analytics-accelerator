@@ -1,6 +1,6 @@
 # Azure Analytics Accelerator
 
-The following sections can be used to deploy an `Azure Synapse Analytics Workspace` and/or an `Azure Machine Learning Workspace` and/or an `Azure Databricks Workspace` into the same Azure Resource Group or different Azure Resource Groups.  It will allow you to explore some of the Data Lake, Data Lakehouse, and Data Warehousing capabilities available on Microsoft Azure. 
+The following accelerators can be used to deploy an `Azure Synapse Analytics Workspace` and/or an `Azure Machine Learning Workspace` and/or an `Azure Databricks Workspace` into the same Azure Resource Group or separate Azure Resource Groups.  It will allow you to explore some of the AI and Machine Learning, Data Lake, Data Lakehouse, and Data Warehousing capabilities available on Microsoft Azure.  You will also be able to use [Power BI](https://powerbi.microsoft.com/en-us/) to access data from analytic data stores and access deployed Azure Machine Learning custom models for scoring data.
 
 ## Purpose
 
