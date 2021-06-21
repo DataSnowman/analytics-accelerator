@@ -26,6 +26,11 @@ This accelerator provides an examples of common use cases using things like [Sea
 | [Azure Machine Learning](https://github.com/DataSnowman/analytics-accelerator#deploy-an-azure-machine-learning-workspace) | Student Success | AutoML | UC Irvine Machine Learning Repository | [UCI Student Performance Data Set](http://archive.ics.uci.edu/ml/datasets/Student+Performance) | TBD [Code]() | TBD [Steps]() |
 | [Azure Databricks](https://github.com/DataSnowman/analytics-accelerator#deploy-an-azure-databricks-workspace) | Covid-19 | Azure Databricks | JHU Covid-19 | TBD | TBD [Code]() | TBD [Steps]() |
 
+## Open EDU Analytics
+
+If you are interest in Education Analytics please check out the GitHub Repository [OpenEduAnalytics](https://github.com/microsoft/OpenEduAnalytics)
+
+Open Education Analytics (OEA) is a fully open-sourced (Creative Commons and MIT) data integration and analytics architecture and reference implementation for the education sector built on Synapse Analytics - with Azure Data Lake Storage as the storage backbone, and Azure Active Directory as providing the role-based access control.
 
 ## Azure Analytics Services
 
