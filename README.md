@@ -6,7 +6,7 @@ The following accelerators can be used to deploy an `Azure Synapse Analytics Wor
 
 The purpose of this Analytics Accelerator is to help you learn and grow through Hands-on common use cases that show you how to use things like data integration pipelines, Spark notebooks, and SQL Scripts in Azure Synapse Analytics, and/or ADF pipelines, and/or Azure Databricks notebooks, and/or Azure Machine Learning AutoML.
 
-This [GitHub Repository](https://github.com/DataSnowman/analytics-accelerator) along with an Azure Subscription [No Azure Subscription click here](https://azure.microsoft.com/en-us/free/) should allow you to accelerate:
+This [GitHub Repository](https://github.com/DataSnowman/analytics-accelerator) along with an Azure Subscription [No Azure Subscription click here](https://azure.microsoft.com/en-us/free/synapse-analytics/) should allow you to accelerate:
 
 * Business Value
 * Time-to-insight
@@ -14,6 +14,7 @@ This [GitHub Repository](https://github.com/DataSnowman/analytics-accelerator) a
 * Proof of Concepts
 * Architecture choice
 * Infrastructure as code for PoC, Dev, Test, Prod
+* Change
 
 ## Common Use Cases
 
