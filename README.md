@@ -10,11 +10,11 @@ This [GitHub Repository](https://github.com/DataSnowman/analytics-accelerator) a
 
 * Business Value
 * Time-to-insight
+* Modernization
 * Skilling
 * Proof of Concepts
 * Architecture choice
 * Infrastructure as code for PoC, Dev, Test, Prod
-* Change
 
 ## Common Use Cases
 
