@@ -16,6 +16,13 @@ This [GitHub Repository](https://github.com/DataSnowman/analytics-accelerator) a
 * Architecture choice
 * Infrastructure as code for PoC, Dev, Test, Prod
 
+## Presentation of Content
+
+| Event | Title | Presentation | Demo |
+| :------------- | :----------: | :----------: | :----------: |
+|DevDays2021 | Accelerate business value and time-to-insight with Azure Analytic | [Deck with Recording](https://1drv.ms/p/s!AmFpgz3VMIP0ifp5SuWniGXKYL_qRg?e=2XjfuO) | [Demo Recording](https://1drv.ms/v/s!AmFpgz3VMIP0ifp4hDOimkMrx4jViw?e=pHqG9n) |
+
+
 ## Common Use Cases
 
 This accelerator provides an examples of common use cases using things like [Seattle Public Library](https://data.seattle.gov/browse?q=Seattle%20Public%20Libraries&sortBy=most_accessed&utf8=%E2%9C%93) public csv datasets (and other datasets), that are captured on ADLS and composed into parquet files, Spark tables, Serverless external tables, and Dedicated SQL pool tables, then consumed using SQL. 
