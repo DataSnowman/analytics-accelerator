@@ -2,13 +2,13 @@
 
 ### Step 1 Create Control Table and Stored Procedure used by Azure Data Factory
 
-Use the following SQL script [ControlTableForSourceToSink.sql](ControlTableForSourceToSink.sql) to create the ControlTableForSourceToSink table in the database deployed by the ARM template in the Deploy an Azure Databricks Workspace Azure Analytics Accelerator.
+Use the following SQL script [ControlTableForSourceToSink.sql](https://github.com/DataSnowman/analytics-accelerator/blob/main/usecases/cdc/code/sqlscripts/ControlTableForSourceToSink.sql) to create the ControlTableForSourceToSink table in the database deployed by the ARM template in the Deploy an Azure Databricks Workspace Azure Analytics Accelerator.
 
-![Step 1 table](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/3a.png)
+![Step 1 table](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/cdcstep1table.png)
 
 Use the following SQL script [spUpdateWatermark.sql](spUpdateWatermark.sql) to create the spUpdateWatermark stored procedure in the database deployed by the ARM template in the Deploy an Azure Databricks Workspace Azure Analytics Accelerator.
 
-![Step 1 sproc](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/3a.png)
+![Step 1 sproc](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/cdcstep1sproc.png)
 
 
 
