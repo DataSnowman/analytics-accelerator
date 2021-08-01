@@ -55,10 +55,8 @@
         "databaseTier": "Basic",
         "collation": "SQL_Latin1_General_CP1_CI_AS",
         "maxSizeBytes": "2147483648",
+        "sampleName": "AdventureWorksLT",
         "sqlServerResourceId": "[resourceId('Microsoft.Sql/servers', variables('sqlServerName'))]",
-        "stgVersion": "2015-06-15",
-        "storageAccountType": "Standard_LRS",
-        "storageAccountName": "[concat(parameters('deploymentTla'), uniqueString(subscription().subscriptionId))]",
         "dlsName": "[toLower(concat(parameters('deploymentTla'),parameters('deploymentType'),uniqueString(resourceGroup().id)))]",
         "dlsFsName": "[toLower(concat(variables('dlsName'),'fs1'))]",
         "adbworkspaceName": "[concat(parameters('deploymentTla'), uniqueString(subscription().subscriptionId))]",
@@ -151,7 +149,8 @@
                 "edition": "[variables('edition')]",
                 "requestedServiceObjectiveName": "[variables('databaseTier')]",
                 "collation": "[variables('collation')]",
-                "maxSizeBytes": "[variables('maxSizeBytes')]"
+                "maxSizeBytes": "[variables('maxSizeBytes')]",
+                "sampleName": "[variables('sampleName')]"
             }
         }, {
             "apiVersion": "[variables('sqlVersion')]",
