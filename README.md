@@ -41,6 +41,7 @@ This accelerator provides an examples of common use cases using things like [Sea
 | [Azure Machine Learning](https://github.com/DataSnowman/analytics-accelerator#deploy-an-azure-machine-learning-workspace) | Car Price | AutoML | UC Irvine Machine Learning Repository | [UCI Automobile Data Set](https://archive.ics.uci.edu/ml/datasets/automobile) | [Code](https://github.com/DataSnowman/analytics-accelerator/tree/main/usecases/carprice/code) | [Steps](https://github.com/DataSnowman/analytics-accelerator/tree/main/usecases/carprice/steps/usecasesteps.md) |
 | [Azure Machine Learning](https://github.com/DataSnowman/analytics-accelerator#deploy-an-azure-machine-learning-workspace) | Student Success | AutoML | UC Irvine Machine Learning Repository | [UCI Student Performance Data Set](http://archive.ics.uci.edu/ml/datasets/Student+Performance) | TBD [Code]() | TBD [Steps]() |
 | [Azure Databricks](https://github.com/DataSnowman/analytics-accelerator#deploy-an-azure-databricks-workspace) | Covid-19 | Azure Databricks | JHU Covid-19 | TBD | TBD [Code]() | TBD [Steps]() |
+| [Azure Databricks](https://github.com/DataSnowman/analytics-accelerator#deploy-an-azure-databricks-workspace) | Change Data Capture | Azure Databricks, ADF, Azure SQL DB | CDC | Change Data Capture using ADF and Databricks Autoloader | [Code](https://github.com/DataSnowman/analytics-accelerator/tree/main/usecases/cdc/code) | [Steps](https://github.com/DataSnowman/analytics-accelerator/blob/main/usecases/cdc/steps/usecasesteps.md) |
 
 ## Open EDU Analytics
 
