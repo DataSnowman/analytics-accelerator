@@ -56,7 +56,7 @@ It should look like this when it is imported
 
 ![adfTemplateImported](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/adfTemplateImported.png)
 
-### Debug the BulkCopyfromDB_with_ControlTable Pipeline 
+### Step 3 Debug the BulkCopyfromDB_with_ControlTable Pipeline 
 
 Click on Debug, enter the name of the Control table `ControlTableForSourceToSink`
 Click OK
@@ -70,3 +70,11 @@ Once the pipeline runs successfully it should look like this
 Check that the files have been created in Storage using Azure Storage Explorer of Azure Portal in the browser.  The files should be in bronze container at a path like `CDC/Sales/Microsoft/AdventureWorksLT/SalesLT/Address/`
 
 ![adfFileInStorage](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/adfFileInStorage.png)
+
+You can now save the pipline by clickin on Publish all
+
+![adfPublishAll](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/adfPublishAll.png)
+
+### Step 4 Import, configure, and run the Databrick Notebook
+
+TBD
