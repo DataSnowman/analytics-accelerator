@@ -14,13 +14,15 @@ Use the following SQL script [CreateStudent.sql](https://github.com/DataSnowman/
 
 ![Step 1 student](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/cdcstep1student.png)
 
+### Step 2 Create Azure Data Factory Pipeline from Template
+
 
 
 ![Step 3d](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/3d.png)
 
 Select `Built-in copy task` and click Next
 
-![Step 3e](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/3e.png)
+![adfplfromtemplate](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/adfplfromtemplate.png)
 
 Source type - Select HTTP and click + Create new connection
 
