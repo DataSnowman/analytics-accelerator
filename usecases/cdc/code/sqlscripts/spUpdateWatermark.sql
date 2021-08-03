@@ -1,9 +1,10 @@
-CREATE PROCEDURE spUpdateWatermark @LastModifiedtime datetime
+CREATE PROCEDURE spUpdateWatermark @LastModifyDate datetime, @PartitionID INT
  		AS
 
  		BEGIN
 
  			UPDATE [ControlTableForSourceToSink]
- 			SET [WatermarkValue] = @LastModifiedtime 
+ 			SET [WatermarkValue] = @LastModifyDate
+			WHERE PartitionID = @PartitionID
 
  		END
