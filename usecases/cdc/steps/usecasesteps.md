@@ -46,7 +46,13 @@ Select +New in the second User input and create an Azure Data Lake Storage Gen2 
 
 For Input 3 select the same Database you chose in Input 1 
 
-For Input 4 select the same Storage input you chose in Input 2
+For Input 4 select the same Database you chose in Input 1
+
+For Input 5 select the same Storage input you chose in Input 2
+
+For Input 6 select the same Database you chose in Input 1 
+
+For Input 7 select the same Database you chose in Input 1
 
 Then click on Use this template
 
@@ -56,7 +62,7 @@ It should look like this when it is imported
 
 ![adfTemplateImported](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/adfTemplateImported.png)
 
-### Step 3 Debug the BulkCopyfromDB_with_ControlTable Pipeline 
+### Step 3 Debug the DeltaCopyAndFullCopyfromDB_using_ControlTable Pipeline 
 
 Click on Debug, enter the name of the Control table `ControlTableForSourceToSink`
 Click OK
@@ -70,6 +76,15 @@ Once the pipeline runs successfully it should look like this
 Check that the files have been created in Storage using Azure Storage Explorer of Azure Portal in the browser.  The files should be in bronze container at a path like `CDC/Sales/Microsoft/AdventureWorksLT/SalesLT/Address/`
 
 ![adfFileInStorage](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/adfFileInStorage.png)
+
+If you run the pipeline a second time you will see another file created.  Since the Address table has a ModifiedDate column which can be used as a Watermark the second file (smaller 102 bytes) only contains a header since there were no changes (unless some updates are done to the Address table)
+
+![adfFileInStorage2](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/adfFileInStorage2.png)
+
+If you compare this file to the studentMath files (which does not have a watermark column) they are the same size because it in not doing a delta.  The file will get larger as inserts and update happen in the studentMath table.
+
+![adfFileInStorage3](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/adfFileInStorage3.png)
+
 
 You can now save the pipline by clickin on Publish all
 
