@@ -130,9 +130,9 @@ The notebook would now look like this:
 
 ![adbadlsacctname](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/adbadlsacctname.png)
 
-#### Configure ADLS Permissions
+#### Configure Service Principal and Permissions
 
-Create a Service principal
+*Create a Service principal*
 
 Create an [Azure Active Directory app and service principal](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal) in the form of client ID and client secret.
 
@@ -148,6 +148,8 @@ Create an [Azure Active Directory app and service principal](https://docs.micros
 
 Name the application something like `autoloader-darsch`. Select a supported account type, which determines who can use the application. After setting the values, select Register.
 
+Note that it is a good idea to name the application with something unique to you like your email alias (darsch in my case) because other might use similar names like autoloader.
+
 ![adbregister](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/adbregister.png)
 
 5. Copy the Directory (tenant) ID and store it to use to create an application secret.
@@ -155,3 +157,107 @@ Name the application something like `autoloader-darsch`. Select a supported acco
 6. Copy the Application (clinet) ID and store it to use to create an application secret.
 
 ![adbappids](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/adbappids.png)
+
+*Assign Role Permissions*
+
+7. At storage account level assign this app the following roles to the storage account in which the input path resides:
+
+    `Contributor`: This role is for setting up resources in your storage account, such as queues and event subscriptions.
+    `Storage Queue Data Contributor`: This role is for performing queue operations such as retrieving and deleting messages from the queues. This role is required in Databricks Runtime 8.1 and above only when you provide a service principal without a connection string.
+
+![adbstorageiam](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/adbstorageiam.png)
+
+8. At resource group level assign this app the following role to the related resource group:
+
+    `EventGrid EventSubscription Contributor`: This role is for performing event grid subscription operations such as creating or listing event subscriptions.
+
+![adbrgiam](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/adbrgiam.png)
+
+*Create a new application secret*
+
+- Select Azure Active Directory.
+
+- From App registrations in Azure AD, select your application.
+
+- Select Certificates & secrets.
+
+- Select Client secrets -> New client secret.
+
+- Provide a description of the secret, and a duration. When done, select Add.
+
+![adbappsecret](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/adbappsecret.png)
+
+After saving the client secret, the value of the client secret is displayed. Copy this value because you won't be able to retrieve the key later. You will provide the key value with the application ID to sign in as the application. Store the key value where your application can retrieve it.
+
+![adbappsecretval](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/adbappsecretval.png)
+
+#### Deploy a Key Vault and setup secrets
+
+Create a Key Vault in the Resource group by clicking Create
+
+![adbrgservices](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/adbrgservices.png)
+
+Search for `Key vault`
+
+![adbkvsearch](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/adbkvsearch.png)
+
+Click Create
+
+![adbkvcreate](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/adbkvcreate.png)
+
+Create the Key Vault in the same Resource group and Region as you other resource deployed. Click Review and Create and then click Create
+
+![adbrevcreate](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/adbrevcreate.png)
+
+You should now have a Key vault in your resources
+
+![adbrgwithkv](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/adbrgwithkv.png)
+
+Open up you Key vault and add the appsecret created above
+
+Choose Secrets and click Generate/Import
+
+![adbkvsecretgen](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/adbkvsecretgen.png)
+
+Enter you secret Name and paste in the app secret you created earlier, set activation date and click Create
+
+![adbcreatesecret](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/adbcreatesecret.png)
+
+It should look like this:
+
+![adbfirstsecret](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/adbfirstsecret.png)
+
+*Create the rest of the secrets you need for the notebook*
+
+Create the rest of the secrets in cell 4 of the notebook
+
+```
+SubscriptionID = dbutils.secrets.get("c-change-autoloader","SubscriptionID")
+DirectoryID = dbutils.secrets.get("c-change-autoloader","DirectoryID")
+ServicePrincipalAppID = dbutils.secrets.get("c-change-autoloader","ServicePrincipalAppID")
+ServicePrincipalSecret = dbutils.secrets.get("c-change-autoloader","appsecret")
+ResourceGroup = dbutils.secrets.get("c-change-autoloader","ResourceGroup")
+BlobConnectionKey = dbutils.secrets.get("c-change-autoloader","adls2-secret")
+```
+**Create an Azure Key Vault-backed secret scope using the UI**
+
+Verify that you have Contributor permission on the Azure Key Vault instance that you want to use to back the secret scope.
+
+Go to https://<databricks-instance>#secrets/createScope. This URL is case sensitive; scope in createScope must be uppercase.
+
+https://<databricks-instance>#secrets/createScope
+
+In my case `https://adb-3272096941209353.13.azuredatabricks.net#secrets/createScope`
+
+You can find the databricks-instance in the URL of your workspace
+
+![adbinstance](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/adbinstance.png)
+
+
+#### Create a Databricks Cluster
+
+Create a cluster using the Runtime 8.3 or above
+
+Enter Cluster Name, Runtime Version, Set Terminate after, Min Workers, Max Workers and click Create Cluster
+
+![adbcreatecluster](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/adbcreatecluster.png)
