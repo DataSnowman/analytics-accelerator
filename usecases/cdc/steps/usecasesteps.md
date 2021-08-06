@@ -122,7 +122,7 @@ In my chase my deployment has a Storage account name of `adfacceler7kdgtkhj5mpoa
 
 ![adbrgservices](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/adbrgservices.png)
 
-Change the values for `sourceAdlsFolderName` and `sinkAdlsFolderName` to `CDC/Sales/Microsoft/adworkslt/SalesLT/Address` to match the value in the columns in the `ControlTableForSourceToSink` table.  Note if you change any column values in the `ControlTableForSourceToSink` table make the appropriate changes.
+Change the values for `sourceAdlsFolderName` and `sinkAdlsFolderName` to `CDC/Sales/Microsoft/AdventureWorksLT/SalesLT/Address` to match the value in the columns in the `ControlTableForSourceToSink` table.  Note if you change any column values in the `ControlTableForSourceToSink` table make the appropriate changes.
 
 ![adbfolderpath](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/adbfolderpath.png)
 
@@ -132,7 +132,7 @@ The notebook would now look like this:
 
 #### Configure Service Principal and Permissions
 
-*Create a Service principal*
+*Create a Service principal* [Reference](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#register-an-application-with-azure-ad-and-create-a-service-principal)
 
 Create an [Azure Active Directory app and service principal](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal) in the form of client ID and client secret.
 
@@ -158,12 +158,13 @@ Note that it is a good idea to name the application with something unique to you
 
 ![adbappids](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/adbappids.png)
 
-*Assign Role Permissions*
+*Assign Role Permissions* [Reference](https://docs.microsoft.com/en-us/azure/databricks/spark/latest/structured-streaming/auto-loader-gen2#permissions)
 
 7. At storage account level assign this app the following roles to the storage account in which the input path resides:
 
     `Contributor`: This role is for setting up resources in your storage account, such as queues and event subscriptions.
-    `Storage Queue Data Contributor`: This role is for performing queue operations such as retrieving and deleting messages from the queues. This role is required in Databricks Runtime 8.1 and above only when you provide a service principal without a connection string.
+    `Storage Queue Data Contributor`: This role is for performing queue operations such as retrieving and deleting messages from the queues. This role is required in Databricks Runtime 8.1 and above only when you provide a service principal without a connection string.|
+    `Storage Blob Data Contributor` to access storage
 
 ![adbstorageiam](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/adbstorageiam.png)
 
@@ -239,7 +240,9 @@ ServicePrincipalSecret = dbutils.secrets.get("c-change-autoloader","appsecret")
 ResourceGroup = dbutils.secrets.get("c-change-autoloader","ResourceGroup")
 BlobConnectionKey = dbutils.secrets.get("c-change-autoloader","adls2-secret")
 ```
-**Create an Azure Key Vault-backed secret scope using the UI**
+The adls2-secrect is created using the storage key
+
+**Create an Azure Key Vault-backed secret scope using the UI** [Reference](https://docs.microsoft.com/en-us/azure/databricks/security/secrets/secret-scopes#create-an-azure-key-vault-backed-secret-scope-using-the-ui)
 
 Verify that you have Contributor permission on the Azure Key Vault instance that you want to use to back the secret scope.
 
@@ -253,11 +256,60 @@ You can find the databricks-instance in the URL of your workspace
 
 ![adbinstance](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/adbinstance.png)
 
+Enter Scope Name: I choose something like `c-change-autoloader` which is what I used in the notebook
 
-#### Create a Databricks Cluster
+Manage Principal:  `All Users`
+
+DNS Name: `https://xxxxxx.vault.azure.net/` Find in the properites of Key vault under Vault URI
+
+Resource ID: Find in the properties of the Key vault.  Looks something like this: 
+
+```
+/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/databricks-rg/providers/Microsoft.KeyVault/vaults/databricksKV
+```
+![adbsecretResID](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/adbsecretResID.png)
+
+Click Create
+
+![adbsecretscope](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/adbsecretscope.png)
+
+
+#### Create a Databricks Cluster and attach to notebook
 
 Create a cluster using the Runtime 8.3 or above
 
 Enter Cluster Name, Runtime Version, Set Terminate after, Min Workers, Max Workers and click Create Cluster
 
 ![adbcreatecluster](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/adbcreatecluster.png)
+
+#### Run the notebook one cell at a time (at least the first time)
+
+Once the cluster is started you will be able to run the code in the cells
+
+Click on Run Cell
+
+![adbcruncell](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/adbcruncell.png)
+
+Do this for the next cell down etc.
+
+You can skip cell 6 the first time because nothing has been mounted.  You may get an error like this:
+
+![adbunmount](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/adbunmount.png)
+
+Just move on to cell 7 to mount the Source and Sink file system
+
+The first time to run cell 16 comment out the 2 lines it references by putting # at beginning of each line.
+
+```
+ #.foreachBatch(upsertToDelta) # Comment this out first time you run
+ #.queryName("c-changeLoader-merge") # Comment this out first time you run
+```
+
+![adbcell16](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/adbcell16.png)
+
+After you run this the first time uncomment the 2 lines because you will want the upsert to run
+
+Also notice that running the notebook has created a `Event Grid System Topic` in the resources
+
+![adbeventgrid](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/adbeventgrid.png)
+
