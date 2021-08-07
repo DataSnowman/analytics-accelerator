@@ -313,3 +313,36 @@ Also notice that running the notebook has created a `Event Grid System Topic` in
 
 ![adbeventgrid](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/adbeventgrid.png)
 
+When you run the last cell 19 you should see 3 records for Everett WA
+
+![adbcell19](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/adbcell19.png)
+
+#### Go make a change to the Address table in Azure SQL Database, Run ADF Pipeline, and rerun cell 16 and 19
+
+In a SQL Editor like Azure Data Studio or the browser run the following SQL to insert a new row
+
+```
+INSERT INTO [SalesLT].[Address]
+        ([AddressLine1], [AddressLine2], [City], [StateProvince] ,[CountryRegion], [PostalCode])
+ 		VALUES
+		('138th Drive', NULL, 'Everett', 'WA', 'USA', '98208')
+```
+
+You can cut and paste or use the following SQL script [InsertAddress.sql](https://github.com/DataSnowman/analytics-accelerator/blob/main/usecases/cdc/code/sqlscripts/InsertAddress.sql) 
+
+Rerun the ADF Pipeline
+
+Click on Debug, enter the name of the Control table `ControlTableForSourceToSink` Click OK
+
+![adfDebugPipelineRun](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/adfDebugPipelineRun.png)
+
+Rerun cell 16 and 19 in the `autoloadersp` notebook
+
+Make sure rows 4 and 5 of the code are uncommented so that the upsertToDelta function runs
+
+![adbcell16again](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/adbcell16again.png)
+
+This time you should see that new record
+
+![adbcell19again](https://raw.githubusercontent.com/DataSnowman/analytics-accelerator/main/images/adbcell19again.png)
+
