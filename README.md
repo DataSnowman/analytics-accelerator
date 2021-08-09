@@ -43,6 +43,8 @@ This accelerator provides an examples of common use cases using things like [Sea
 | [Azure Databricks](https://github.com/DataSnowman/analytics-accelerator#deploy-an-azure-databricks-workspace) | Covid-19 | Azure Databricks | JHU Covid-19 | TBD | TBD [Code]() | TBD [Steps]() |
 | [Azure Databricks](https://github.com/DataSnowman/analytics-accelerator#deploy-an-azure-databricks-workspace) | Change Data Capture | Azure Databricks, ADF, Azure SQL DB | AdventureworksLT | Change Data Capture using ADF and Databricks Autoloader | [Code](https://github.com/DataSnowman/analytics-accelerator/tree/main/usecases/cdc/code) | [Steps](https://github.com/DataSnowman/analytics-accelerator/blob/main/usecases/cdc/steps/usecasesteps.md) |
 
+## Change Data Capture
+
 ## Open EDU Analytics
 
 If you are interest in Education Analytics please check out the GitHub Repository [OpenEduAnalytics](https://github.com/microsoft/OpenEduAnalytics)
