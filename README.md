@@ -10,7 +10,7 @@ Jump to [Deploy an Azure Machine Learning Workspace](https://github.com/DataSnow
 
 Jump to [Deploy an Azure Databricks Workspace](https://github.com/DataSnowman/analytics-accelerator#deploy-an-azure-databricks-workspace)
 
-Jump to [Deploy an Azure Purview Account](https://github.com/DataSnowman/analytics-accelerator#deploy-an-azure-databricks-workspace)
+Jump to [Deploy an Azure Purview Account](https://github.com/DataSnowman/analytics-accelerator#deploy-azure-purview)
 
 ## Purpose
 
@@ -63,6 +63,8 @@ This accelerator should allow you more time to focus on hands on keyboard and le
 * [Azure Machine Learning](https://github.com/DataSnowman/analytics-accelerator#deploy-an-azure-machine-learning-workspace)
 
 * [Azure Databricks](https://github.com/DataSnowman/analytics-accelerator#deploy-an-azure-databricks-workspace)
+
+* [Azure Purview](https://github.com/DataSnowman/analytics-accelerator#deploy-azure-purview)
 
 Use your own data, the [Common Use Cases](https://github.com/DataSnowman/analytics-accelerator#common-use-cases) above, or the Getting Started wizard inside of the workspace is recommended to use sample data if you do not have your own.
 
