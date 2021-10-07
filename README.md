@@ -10,6 +10,8 @@ Jump to [Deploy an Azure Machine Learning Workspace](https://github.com/DataSnow
 
 Jump to [Deploy an Azure Databricks Workspace](https://github.com/DataSnowman/analytics-accelerator#deploy-an-azure-databricks-workspace)
 
+Jump to [Deploy an Azure Purview Account](https://github.com/DataSnowman/analytics-accelerator#deploy-an-azure-databricks-workspace)
+
 ## Purpose
 
 The purpose of this Analytics Accelerator is to help you learn and grow through Hands-on common use cases that show you how to use things like data integration pipelines, Spark notebooks, and SQL Scripts in Azure Synapse Analytics, and/or ADF pipelines, and/or Azure Databricks notebooks, and/or Azure Machine Learning AutoML.
@@ -42,6 +44,7 @@ This accelerator provides an examples of common use cases using things like [Sea
 | [Azure Machine Learning](https://github.com/DataSnowman/analytics-accelerator#deploy-an-azure-machine-learning-workspace) | Student Success | AutoML | UC Irvine Machine Learning Repository | [UCI Student Performance Data Set](http://archive.ics.uci.edu/ml/datasets/Student+Performance) | TBD [Code]() | TBD [Steps]() |
 | [Azure Databricks](https://github.com/DataSnowman/analytics-accelerator#deploy-an-azure-databricks-workspace) | Covid-19 | Azure Databricks | JHU Covid-19 | TBD | TBD [Code]() | TBD [Steps]() |
 | [Azure Databricks](https://github.com/DataSnowman/analytics-accelerator#deploy-an-azure-databricks-workspace) | Change Data Capture | Azure Databricks, ADF, Azure SQL DB | AdventureworksLT | Change Data Capture using ADF and Databricks Autoloader | [Code](https://github.com/DataSnowman/analytics-accelerator/tree/main/usecases/cdc/code) | [Steps](https://github.com/DataSnowman/analytics-accelerator/blob/main/usecases/cdc/steps/usecasesteps.md) |
+| [Azure Purview](https://github.com/DataSnowman/analytics-accelerator#deploy-azure-purview) | Data Governance | Azure Purview | AdventureworksLT | Data Governance with Azure Purview | [Code](https://github.com/DataSnowman/analytics-accelerator/tree/main/usecases/cdc/code) | [Steps](https://github.com/DataSnowman/analytics-accelerator/blob/main/usecases/datagov/steps/usecasesteps.md) |
 
 ## Change Data Capture
 
@@ -124,3 +127,14 @@ This template deploys the following:
 - Azure Data Lake Storage Gen2
 - Azure Data Factory
 - Azure SQL Database
+
+## Deploy Azure Purview
+
+`Together with Azure Key Vault`
+
+[![Deploy To Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FDataSnowman%2Fanalytics-accelerator%2Fmain%2Fworkspace%2FpurviewAccount%2Fazuredeploy.json) [![Visualize](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.svg?sanitize=true)](http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2FDataSnowman%2Fanalytics-accelerator%2Fmain%2Fworkspace%2FpurviewAccount%2Fazuredeploy.json)
+
+This template deploys the following:
+
+- Azure Purview
+- Azure Key Vault
