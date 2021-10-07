@@ -1,6 +1,6 @@
 # Azure Analytics Accelerator
 
-The following accelerators can be used to deploy an `Azure Synapse Analytics Workspace` and/or an `Azure Machine Learning Workspace` and/or an `Azure Databricks Workspace` into the same Azure Resource Group or separate Azure Resource Groups.  It will allow you to explore some of the AI and Machine Learning, Data Lake, Data Lakehouse, and Data Warehousing capabilities available on Microsoft Azure.  You will also be able to use [Power BI](https://powerbi.microsoft.com/en-us/) to access data from analytic data stores and access deployed Azure Machine Learning custom models for scoring data.
+The following accelerators can be used to deploy an `Azure Synapse Analytics Workspace` and/or an `Azure Machine Learning Workspace` and/or an `Azure Databricks Workspace` and/or an `Azure Purview Account` into the same Azure Resource Group or separate Azure Resource Groups.  It will allow you to explore some of the AI and Machine Learning, Data Lake, Data Lakehouse, Data Warehousing, and Data Governance capabilities available on Microsoft Azure.  You will also be able to use [Power BI](https://powerbi.microsoft.com/en-us/) to access data from analytic data stores and access deployed Azure Machine Learning custom models for scoring data.  With the GA release of Azure Purview you will also be to explore data governance of your data estate.
 
 ## I am in. Lets go Deploy!
 
@@ -14,7 +14,7 @@ Jump to [Deploy an Azure Purview Account](https://github.com/DataSnowman/analyti
 
 ## Purpose
 
-The purpose of this Analytics Accelerator is to help you learn and grow through Hands-on common use cases that show you how to use things like data integration pipelines, Spark notebooks, and SQL Scripts in Azure Synapse Analytics, and/or ADF pipelines, and/or Azure Databricks notebooks, and/or Azure Machine Learning AutoML.
+The purpose of this Analytics Accelerator is to help you learn and grow through Hands-on common use cases that show you how to use things like data integration pipelines, Spark notebooks, and SQL Scripts in Azure Synapse Analytics, and/or ADF pipelines, and/or Azure Databricks notebooks, and/or Azure Machine Learning AutoML, and/or Azure Purview scans.
 
 This [GitHub Repository](https://github.com/DataSnowman/analytics-accelerator) along with an Azure Subscription [No Azure Subscription click here](https://azure.microsoft.com/en-us/free/synapse-analytics/) should allow you to accelerate:
 
